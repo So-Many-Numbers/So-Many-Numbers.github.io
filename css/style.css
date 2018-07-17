@@ -1,0 +1,38 @@
+html {
+  height:100%;
+}
+body {
+  background-color: #D0D0D0;
+  height: 100%;
+}
+h1{
+  font-size: 24px;
+  font-family: "Sans-Serif,"Arial;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+button {
+    border: none;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #0000ff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+button:active {
+  border: 2px solid blue;
+}
+button:focus {
+  border: 2px solid blue;
+}
