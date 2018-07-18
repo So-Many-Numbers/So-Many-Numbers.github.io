@@ -1,0 +1,57 @@
+html {
+  height:100%;
+}
+
+body {
+  height:100%;
+}
+
+.front-center {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  height:100%;
+}
+
+.footer {
+  margin-top:-45px;
+  text-align:center;
+}
+
+.progress-bar {
+  margin-bottom:-30px;
+  background-color:blue;
+  height:30px;
+}
+
+#gauge {
+  background-color:red;
+  margin:0 auto;
+  width:90%;
+  height:10px;
+}
+
+#math-problems tr {
+  opacity:0.2;
+}
+
+#math-problems tr:nth-child(3) {
+  opacity:1;
+}
+
+#math-problems td {
+  font-size:55px;
+  padding-bottom:0.25em;
+}
+
+#math-problems td:first-child {
+  text-align: center;
+  width:5em;
+
+}
+
+#math-answer {
+  text-align:center;
+  width:2em;
+}
