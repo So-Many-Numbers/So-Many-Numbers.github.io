@@ -6,6 +6,14 @@ let intime;
 let currentTime;
 
 function generateGame(numberOfProblems) {
+
+  document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">3</p>`;
+  setTimeout(function(){ document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">2</p>`; }, 1000);
+  setTimeout(function(){ document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">1</p>`; }, 2000);
+
+setTimeout(function(){
+document.getElementById("non-math-area").style.display = "none";
+  document.getElementById("math-problems").style.display = "block";
   currentTime = 0;
   intime=setInterval(stopwatch,100);
   offset = Date.now();
@@ -69,7 +77,7 @@ function generateGame(numberOfProblems) {
   document.getElementById("row3").innerHTML=expressions[currentExpression];
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
-
+}, 3000);
 }
 
 document.getElementById("math-answer").addEventListener("input", checkAnswer);
@@ -109,11 +117,12 @@ function checkAnswer() {
     }
     else if (numberProblems == currentExpression) {
       clearInterval(intime);
-      document.getElementById("problem-area").innerHTML=`
-      <div style="text-align:center;">
-        <p>Done!</p>
+      document.getElementById("math-problems").style.display = "none";
+      document.getElementById("non-math-area").style.display = "block";
+      document.getElementById("non-math-area").innerHTML=`
+        <p style="font-size:40px;">Done!</p>
         <p><button onclick="playitagain()">Play Again</button></p>
-      </div>`;
+      `;
     }
     else {
       document.getElementById("row1").innerHTML=expressions[currentExpression-2];

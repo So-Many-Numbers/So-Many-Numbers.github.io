@@ -86,3 +86,12 @@ justify-content: center;
   margin-top:40px;
   font-size:28px;
 }
+
+#math-problems {
+  text-align:center;
+  display:none;
+}
+
+#non-math-area {
+  text-align:center;
+}
