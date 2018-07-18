@@ -1,9 +1,11 @@
 let expressions = [];
 let solutions = [];
 let currentExpression = 0;
+let numberProblems = 0;
 
 function generateGame(numberOfProblems) {
-
+  document.getElementById("math-answer").focus();
+  numberProblems = numberOfProblems;
   for (var i = 0; i < numberOfProblems; i++) {
     let operatorRand = Math.floor(Math.random() * 4);
     let operator;
@@ -54,11 +56,59 @@ function generateGame(numberOfProblems) {
   console.log(expressions);
   console.log(solutions);
 
-  document.getElementById("set1").style.opacity = 0;
-  document.getElementById("set2").style.opacity = 0;
+
 
   document.getElementById("row3").innerHTML=expressions[currentExpression];
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
 
+}
+
+document.getElementById("math-answer").addEventListener("input", checkAnswer);
+
+function checkAnswer() {
+  if (document.getElementById("math-answer").value == solutions[currentExpression]) {
+    currentExpression += 1;
+
+    if (currentExpression == 1) {
+      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
+      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
+      document.getElementById("row3").innerHTML=expressions[currentExpression];
+      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
+      document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+    }
+
+    else if (numberProblems - currentExpression == 2) {
+      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
+      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
+      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
+      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
+      document.getElementById("row3").innerHTML=expressions[currentExpression];
+      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
+      document.getElementById("row5").innerHTML="&nbsp;"
+    }
+
+    else if (numberProblems - currentExpression == 1) {
+      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
+      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
+      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
+      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
+      document.getElementById("row3").innerHTML=expressions[currentExpression];
+      document.getElementById("row4").innerHTML="&nbsp;";
+    }
+    else if (numberProblems == currentExpression) {
+      document.getElementById("problem-area").innerHTML="<p>Yay!</p>"
+    }
+    else {
+      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
+      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
+      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
+      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
+      document.getElementById("row3").innerHTML=expressions[currentExpression];
+      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
+      document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+    }
+
+    document.getElementById("math-answer").value = "";
+  }
 }
