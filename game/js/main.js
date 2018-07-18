@@ -3,9 +3,10 @@ let solutions = [];
 let currentExpression = 0;
 let numberProblems = 0;
 let intime;
-let currentTime = 0;
+let currentTime;
 
 function generateGame(numberOfProblems) {
+  currentTime = 0;
   intime=setInterval(stopwatch,100);
   offset = Date.now();
   document.getElementById("math-answer").focus();
@@ -108,7 +109,11 @@ function checkAnswer() {
     }
     else if (numberProblems == currentExpression) {
       clearInterval(intime);
-      document.getElementById("problem-area").innerHTML="<p>Yay!</p>"
+      document.getElementById("problem-area").innerHTML=`
+      <div style="text-align:center;">
+        <p>Done!</p>
+        <p><button onclick="playitagain()">Play Again</button></p>
+      </div>`;
     }
     else {
       document.getElementById("row1").innerHTML=expressions[currentExpression-2];
@@ -137,4 +142,9 @@ var now = Date.now(),
 d = now - offset;
 offset = now;
 return d;
+}
+
+
+function playitagain() {
+  location.reload();
 }
