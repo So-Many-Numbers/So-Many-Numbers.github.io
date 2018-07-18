@@ -69,8 +69,6 @@ document.getElementById("non-math-area").style.display = "none";
     }
 
   }
-  console.log(expressions);
-  console.log(solutions);
 
 
 
