@@ -20,16 +20,24 @@ body {
 }
 
 .progress-bar {
+  background-color:rgba(0,0,0,0);
   margin-bottom:-30px;
-  background-color:blue;
   height:30px;
+
 }
 
 #gauge {
-  background-color:red;
+background-color:#ddd;
   margin:0 auto;
-  width:90%;
+  width:97%;
   height:10px;
+}
+
+#active-gauge {
+  background-color:#000;
+  height:10px;
+  width:0%;
+  transition: width 0.1s;
 }
 
 #math-problems tr {

@@ -109,6 +109,8 @@ function checkAnswer() {
       document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
     }
 
+    let gaugePercent = (currentExpression / numberProblems)*100;
+    document.getElementById("active-gauge").style.width = gaugePercent+"%";
     document.getElementById("math-answer").value = "";
   }
 }
