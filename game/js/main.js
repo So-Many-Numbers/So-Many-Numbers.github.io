@@ -2,10 +2,17 @@ let expressions = [];
 let solutions = [];
 let currentExpression = 0;
 let numberProblems = 0;
+let intime;
+let currentTime = 0;
 
 function generateGame(numberOfProblems) {
+  intime=setInterval(stopwatch,100);
+  offset = Date.now();
   document.getElementById("math-answer").focus();
   numberProblems = numberOfProblems;
+
+    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+
   for (var i = 0; i < numberOfProblems; i++) {
     let operatorRand = Math.floor(Math.random() * 4);
     let operator;
@@ -76,6 +83,7 @@ function checkAnswer() {
       document.getElementById("row3").innerHTML=expressions[currentExpression];
       document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
       document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+      document.getElementById("math-answer").value = "";
     }
 
     else if (numberProblems - currentExpression == 2) {
@@ -86,6 +94,7 @@ function checkAnswer() {
       document.getElementById("row3").innerHTML=expressions[currentExpression];
       document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
       document.getElementById("row5").innerHTML="&nbsp;"
+      document.getElementById("math-answer").value = "";
     }
 
     else if (numberProblems - currentExpression == 1) {
@@ -95,8 +104,10 @@ function checkAnswer() {
       document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
       document.getElementById("row3").innerHTML=expressions[currentExpression];
       document.getElementById("row4").innerHTML="&nbsp;";
+      document.getElementById("math-answer").value = "";
     }
     else if (numberProblems == currentExpression) {
+      clearInterval(intime);
       document.getElementById("problem-area").innerHTML="<p>Yay!</p>"
     }
     else {
@@ -107,10 +118,23 @@ function checkAnswer() {
       document.getElementById("row3").innerHTML=expressions[currentExpression];
       document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
       document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+      document.getElementById("math-answer").value = "";
     }
 
     let gaugePercent = (currentExpression / numberProblems)*100;
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
-    document.getElementById("math-answer").value = "";
+    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
   }
+}
+
+function stopwatch() {
+currentTime = (currentTime*1+(stopwatch2()/1000)).toFixed(1);
+document.getElementById("timer-area").innerHTML=currentTime + " s";
+}
+
+function stopwatch2() {
+var now = Date.now(),
+d = now - offset;
+offset = now;
+return d;
 }

@@ -51,6 +51,7 @@ background-color:#ddd;
 #math-problems td {
   font-size:55px;
   padding-bottom:0.25em;
+  text-align:center;
 }
 
 #math-problems td:first-child {
@@ -62,4 +63,26 @@ background-color:#ddd;
 #math-answer {
   text-align:center;
   width:2em;
+}
+
+#gauge-fraction {
+
+}
+
+#problem-area {
+  display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#score-meter {
+  text-align:center;
+  margin-top:40px;
+  font-size:28px;
+}
+
+#timer-area {
+  text-align:center;
+  margin-top:40px;
+  font-size:28px;
 }

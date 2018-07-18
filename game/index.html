@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
   </head>
-  <body onload="generateGame(30)">
+  <body onload="generateGame(5)">
 
     <div class="container progress-bar">
       <div id="gauge">
@@ -15,8 +15,14 @@
       </div>
     </div>
 
-    <div class="container front-center">
-      <div id="problem-area">
+
+    <div class="container" style="height:100%;">
+      <div class="row" style="height:100%;">
+      <div class="col-2" id="score-meter">
+
+      </div>
+      <div class="col-8" id="problem-area">
+        <div>
         <table id="math-problems">
           <tbody>
             <tr id="set1">
@@ -42,6 +48,11 @@
           </tbody>
         </table>
       </div>
+      </div>
+      <div class="col-2" id="timer-area">
+      0.0 s
+      </div>
+            </div>
     </div>
     <script src="js/main.js" charset="utf-8"></script>
   </body>
