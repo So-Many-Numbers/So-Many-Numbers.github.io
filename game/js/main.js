@@ -30,18 +30,18 @@ document.getElementById("non-math-area").style.display = "none";
     let solution;
 
     if (operatorRand == 0) {
-      firstNumber = Math.floor(Math.random() * 21);
-      secondNumber = Math.floor(Math.random() * 21);
+      firstNumber = Math.floor((Math.random() * 20) + 1);
+      secondNumber = Math.floor((Math.random() * 20) + 1);
       solution = firstNumber + secondNumber;
       expressions.push(firstNumber + " + " + secondNumber + " =");
       solutions.push(solution);
     }
 
     else if (operatorRand == 1) {
-      firstNumber = Math.floor(Math.random() * 31);
+      firstNumber = Math.floor((Math.random() * 30) + 1);
       secondNumber = 30;
       while (firstNumber - secondNumber < 0) {
-        secondNumber = Math.floor(Math.random() * 21);
+        secondNumber = Math.floor((Math.random() * 30) + 1);
       }
       solution = firstNumber - secondNumber;
       expressions.push(firstNumber + " - " + secondNumber + " =");
@@ -136,6 +136,10 @@ function checkAnswer() {
     let gaugePercent = (currentExpression / numberProblems)*100;
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
     document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+    document.getElementById("score-meter").style.transform="scale(1.1)";
+    document.getElementById("set3").style.transform="scale(1.05)";
+    setTimeout(function(){ document.getElementById("score-meter").style.transform="scale(1)";
+  document.getElementById("set3").style.transform="scale(1)";}, 100);
   }
 }
 
