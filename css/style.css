@@ -1,13 +1,16 @@
+
 html {
   height:100%;
 }
 body {
-  background-color: #D0D0D0;
+  background-color: #d3d3d3;
   height: 100%;
 }
-h1{
-  font-size: 24px;
+
+h1 {
+  font-size: 32px;
   font-family: "Sans-Serif,"Arial;
+
 }
 .center {
   display: flex;
@@ -16,7 +19,7 @@ h1{
   text-align: center;
   height: 100%;
 }
-button {
+.button-1 {
     border: none;
     padding: 15px 25px;
     font-size: 24px;
@@ -24,15 +27,39 @@ button {
     cursor: pointer;
     outline: none;
     color: #fff;
-    background-color: #0000ff;
+    background-color: #b23681;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-}
+  }
+  .button-2{
 
-button:active {
-  border: 2px solid blue;
-}
-button:focus {
-  border: 2px solid blue;
-}
+        border: none;
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: #b23681;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+
+  }
+      button: active {
+      border: 2px solid blue;
+    }
+    button:focus {
+      border: 2px solid blue;
+    }
+    .navbar {
+border: none;
+padding:15px 25px;
+text-align:right;
+text-align: center;
+background-color:#1da2e6;
+color:#ffffff;
+font-family:"Sans-Serif," Arial;
+font-size: 25px;
+    }

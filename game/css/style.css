@@ -21,31 +21,36 @@ body {
 
 .progress-bar {
   background-color:rgba(0,0,0,0);
-  margin-bottom:-30px;
-  height:30px;
+  margin-bottom:-60px;
+  height:60px;
 
 }
 
 #gauge {
-background-color:#ddd;
+background-color:#dadada;
   margin:0 auto;
   width:97%;
-  height:10px;
+  height:28px;
+  border-radius:10px;
+  box-shadow:0 1px 4px 0 rgba(0,0,0,.2)
 }
 
 #active-gauge {
-  background-color:#000;
-  height:10px;
+  background-color:#1da2e6;
+  height:28px;
   width:0%;
-  transition: width 0.1s;
+    border-radius:10px;
+  transition: width 0.2s ease-out;
 }
 
 #math-problems tr {
-  opacity:0.2;
+  opacity:0.25;
 }
 
 #math-problems tr:nth-child(3) {
   opacity:1;
+  transform: scale(1);
+  transition: transform 0.1s;
 }
 
 #math-problems td {
@@ -77,14 +82,19 @@ justify-content: center;
 
 #score-meter {
   text-align:center;
-  margin-top:40px;
-  font-size:28px;
+  margin-top:60px;
+  font-size:38px;
+  transition: transform 0.1s;
 }
 
 #timer-area {
   text-align:center;
-  margin-top:40px;
-  font-size:28px;
+  margin-top:60px;
+  font-size:38px;
+  display:inline-block;
+  border-radius:15px;
+  transition:0.5s;
+  padding: 0 10px;
 }
 
 #math-problems {
@@ -94,4 +104,36 @@ justify-content: center;
 
 #non-math-area {
   text-align:center;
+}
+
+#gameBG {
+  background-color:#fafafa;
+  transition: 0.2s;
+}
+
+#percentageBar {
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.button-again {
+    border: none;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #b23681;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    button:active {
+      border: 2px solid blue;
+    }
+    button:focus {
+      border: 2px solid blue;
+    }
+
 }

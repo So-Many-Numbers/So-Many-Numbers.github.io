@@ -20,7 +20,7 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("math-answer").focus();
   numberProblems = numberOfProblems;
 
-    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+    document.getElementById("score-meter").innerHTML=numberProblems + " left";
 
   for (var i = 0; i < numberOfProblems; i++) {
     let operatorRand = Math.floor(Math.random() * 4);
@@ -30,18 +30,18 @@ document.getElementById("non-math-area").style.display = "none";
     let solution;
 
     if (operatorRand == 0) {
-      firstNumber = Math.floor(Math.random() * 21);
-      secondNumber = Math.floor(Math.random() * 21);
+      firstNumber = Math.floor((Math.random() * 20) + 1);
+      secondNumber = Math.floor((Math.random() * 20) + 1);
       solution = firstNumber + secondNumber;
       expressions.push(firstNumber + " + " + secondNumber + " =");
       solutions.push(solution);
     }
 
     else if (operatorRand == 1) {
-      firstNumber = Math.floor(Math.random() * 31);
+      firstNumber = Math.floor((Math.random() * 30) + 1);
       secondNumber = 30;
       while (firstNumber - secondNumber < 0) {
-        secondNumber = Math.floor(Math.random() * 21);
+        secondNumber = Math.floor((Math.random() * 30) + 1);
       }
       solution = firstNumber - secondNumber;
       expressions.push(firstNumber + " - " + secondNumber + " =");
@@ -75,6 +75,7 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("row3").innerHTML=expressions[currentExpression];
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+  document.getElementById("percentageBar").innerHTML="0% Complete"
 }, 3000);
 }
 
@@ -118,8 +119,9 @@ function checkAnswer() {
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
       document.getElementById("non-math-area").innerHTML=`
-        <p style="font-size:40px;">Done!</p>
-        <p><button onclick="playitagain()">Play Again</button></p>
+        <p style="font-size:45px;">Congrats!</p>
+        <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
+        <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
       `;
     }
     else {
@@ -134,8 +136,31 @@ function checkAnswer() {
     }
 
     let gaugePercent = (currentExpression / numberProblems)*100;
+
+    if (gaugePercent >= 33) {
+      document.getElementById("gameBG").style.backgroundColor="#e0eaec";
+    }
+
+    if (gaugePercent >= 66) {
+      document.getElementById("gameBG").style.backgroundColor="#f5f9e2";
+    }
+
+    if (gaugePercent >= 90) {
+      document.getElementById("gameBG").style.backgroundColor="#f9deb6";
+    }
+
+    if (gaugePercent >= 100) {
+      document.getElementById("gameBG").style.backgroundColor="#fafafa";
+      document.getElementById("timer-area").style.backgroundColor="#e2e239";
+    }
+
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
-    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+    document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
+    document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
+    document.getElementById("score-meter").style.transform="scale(1.1)";
+    document.getElementById("set3").style.transform="scale(1.05)";
+    setTimeout(function(){ document.getElementById("score-meter").style.transform="scale(1)";
+  document.getElementById("set3").style.transform="scale(1)";}, 100);
   }
 }
 
@@ -155,3 +180,10 @@ return d;
 function playitagain() {
   location.reload();
 }
+
+document.querySelector("input").addEventListener("keypress", function (evt) {
+    if (evt.which < 48 || evt.which > 57)
+    {
+        evt.preventDefault();
+    }
+});
