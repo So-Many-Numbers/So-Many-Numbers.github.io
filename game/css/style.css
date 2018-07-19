@@ -21,23 +21,26 @@ body {
 
 .progress-bar {
   background-color:rgba(0,0,0,0);
-  margin-bottom:-34px;
-  height:34px;
+  margin-bottom:-60px;
+  height:60px;
 
 }
 
 #gauge {
-background-color:#ddd;
+background-color:#dadada;
   margin:0 auto;
   width:97%;
-  height:18px;
+  height:28px;
+  border-radius:10px;
+  box-shadow:0 1px 4px 0 rgba(0,0,0,.2)
 }
 
 #active-gauge {
-  background-color:#000;
-  height:18px;
+  background-color:#087cb8;
+  height:28px;
   width:0%;
-  transition: width 0.1s;
+    border-radius:10px;
+  transition: width 0.2s ease-out;
 }
 
 #math-problems tr {
@@ -79,15 +82,15 @@ justify-content: center;
 
 #score-meter {
   text-align:center;
-  margin-top:40px;
-  font-size:34px;
+  margin-top:60px;
+  font-size:38px;
   transition: transform 0.1s;
 }
 
 #timer-area {
   text-align:center;
-  margin-top:40px;
-  font-size:34px;
+  margin-top:60px;
+  font-size:38px;
 }
 
 #math-problems {
@@ -97,4 +100,8 @@ justify-content: center;
 
 #non-math-area {
   text-align:center;
+}
+
+#gameBG {
+  background-color:#fafafa;
 }

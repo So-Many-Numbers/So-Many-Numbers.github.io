@@ -20,7 +20,7 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("math-answer").focus();
   numberProblems = numberOfProblems;
 
-    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+    document.getElementById("score-meter").innerHTML=numberProblems + " left";
 
   for (var i = 0; i < numberOfProblems; i++) {
     let operatorRand = Math.floor(Math.random() * 4);
@@ -135,7 +135,7 @@ function checkAnswer() {
 
     let gaugePercent = (currentExpression / numberProblems)*100;
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
-    document.getElementById("score-meter").innerHTML=currentExpression + "/" + numberProblems;
+    document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
     document.getElementById("score-meter").style.transform="scale(1.1)";
     document.getElementById("set3").style.transform="scale(1.05)";
     setTimeout(function(){ document.getElementById("score-meter").style.transform="scale(1)";
