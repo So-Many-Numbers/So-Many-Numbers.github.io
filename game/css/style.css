@@ -36,7 +36,7 @@ background-color:#dadada;
 }
 
 #active-gauge {
-  background-color:#087cb8;
+  background-color:#1da2e6;
   height:28px;
   width:0%;
     border-radius:10px;
@@ -104,4 +104,10 @@ justify-content: center;
 
 #gameBG {
   background-color:#fafafa;
+}
+
+#percentageBar {
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
 }

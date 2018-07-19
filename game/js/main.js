@@ -75,6 +75,7 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("row3").innerHTML=expressions[currentExpression];
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+  document.getElementById("percentageBar").innerHTML="0% Complete"
 }, 3000);
 }
 
@@ -118,8 +119,9 @@ function checkAnswer() {
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
       document.getElementById("non-math-area").innerHTML=`
-        <p style="font-size:40px;">Done!</p>
+        <p style="font-size:45px;">Congrats!</p>
         <p><button onclick="playitagain()">Play Again</button></p>
+        <p><button onclick="location.href='../index.html'">Back to Title</button></p>
       `;
     }
     else {
@@ -135,6 +137,7 @@ function checkAnswer() {
 
     let gaugePercent = (currentExpression / numberProblems)*100;
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
+    document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
     document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
     document.getElementById("score-meter").style.transform="scale(1.1)";
     document.getElementById("set3").style.transform="scale(1.05)";
