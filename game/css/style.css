@@ -91,6 +91,10 @@ justify-content: center;
   text-align:center;
   margin-top:60px;
   font-size:38px;
+  display:inline-block;
+  border-radius:15px;
+  transition:0.5s;
+  padding: 0 10px;
 }
 
 #math-problems {
@@ -104,6 +108,7 @@ justify-content: center;
 
 #gameBG {
   background-color:#fafafa;
+  transition: 0.2s;
 }
 
 #percentageBar {

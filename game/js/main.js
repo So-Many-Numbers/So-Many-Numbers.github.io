@@ -136,6 +136,24 @@ function checkAnswer() {
     }
 
     let gaugePercent = (currentExpression / numberProblems)*100;
+
+    if (gaugePercent >= 33) {
+      document.getElementById("gameBG").style.backgroundColor="#e0eaec";
+    }
+
+    if (gaugePercent >= 66) {
+      document.getElementById("gameBG").style.backgroundColor="#f5f9e2";
+    }
+
+    if (gaugePercent >= 90) {
+      document.getElementById("gameBG").style.backgroundColor="#f9deb6";
+    }
+
+    if (gaugePercent >= 100) {
+      document.getElementById("gameBG").style.backgroundColor="#fafafa";
+      document.getElementById("timer-area").style.backgroundColor="#e2e239";
+    }
+
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
     document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
     document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
@@ -162,3 +180,10 @@ return d;
 function playitagain() {
   location.reload();
 }
+
+document.querySelector("input").addEventListener("keypress", function (evt) {
+    if (evt.which < 48 || evt.which > 57)
+    {
+        evt.preventDefault();
+    }
+});
