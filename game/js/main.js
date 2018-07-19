@@ -120,8 +120,8 @@ function checkAnswer() {
       document.getElementById("non-math-area").style.display = "block";
       document.getElementById("non-math-area").innerHTML=`
         <p style="font-size:45px;">Congrats!</p>
-        <p><button onclick="playitagain()">Play Again</button></p>
-        <p><button onclick="location.href='../index.html'">Back to Title</button></p>
+        <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
+        <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
       `;
     }
     else {
