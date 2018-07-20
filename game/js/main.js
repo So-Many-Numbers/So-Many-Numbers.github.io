@@ -181,9 +181,9 @@ function playitagain() {
   location.reload();
 }
 
-document.querySelector("input").addEventListener("keypress", function (evt) {
-    if (evt.which < 48 || evt.which > 57)
-    {
-        evt.preventDefault();
-    }
+document.querySelector("input").addEventListener("keypress", function (e) {
+  if (
+    e.key.length === 1 && isNaN(e.key) && !e.ctrlKey) {
+    e.preventDefault();
+  }
 });
