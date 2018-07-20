@@ -4,6 +4,9 @@ let currentExpression = 0;
 let numberProblems = 0;
 let intime;
 let currentTime;
+let bg1 = false;
+let bg2 = false;
+
 
 function generateGame(numberOfProblems) {
 
@@ -138,19 +141,31 @@ function checkAnswer() {
 
     let gaugePercent = (currentExpression / numberProblems)*100;
 
-    if (gaugePercent >= 33) {
-      document.getElementById("gameBG").style.backgroundColor="#e0eaec";
+    if (gaugePercent >= 33 && gaugePercent<66) {
+      if (bg1==false) {
+      bg1 = true;
+      document.getElementById("gameBG").style.backgroundColor="#c9ead0";
+      document.getElementById("encouragement").style.opacity = 1;
+      setTimeout(function(){document.getElementById("encouragement").style.opacity = 0;}, 750);
+      }
     }
 
-    if (gaugePercent >= 66) {
-      document.getElementById("gameBG").style.backgroundColor="#f5f9e2";
+    if (gaugePercent >= 66&& gaugePercent<90) {
+      if (bg2==false) {
+        bg2 = true;
+      document.getElementById("gameBG").style.backgroundColor="#e0e8b6";
+      document.getElementById("encouragement").style.opacity = 1;
+      setTimeout(function(){document.getElementById("encouragement").style.opacity = 0;}, 750);
+          }
     }
 
-    if (gaugePercent >= 90) {
-      document.getElementById("gameBG").style.backgroundColor="#f9deb6";
+    if (gaugePercent >= 90&& gaugePercent<100) {
+      document.getElementById("gameBG").style.backgroundColor="#e6c695";
+      document.getElementById("encouragement").style.opacity = 1;
     }
 
     if (gaugePercent >= 100) {
+      document.getElementById("encouragement").style.opacity = 0;
       document.getElementById("gameBG").style.backgroundColor="#fafafa";
       document.getElementById("timer-area").style.backgroundColor="#e2e239";
     }
@@ -158,6 +173,7 @@ function checkAnswer() {
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
     document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
     document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
+    document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left</span>";
     document.getElementById("score-meter").style.transform="scale(1.1)";
     document.getElementById("set3").style.transform="scale(1.05)";
     setTimeout(function(){ document.getElementById("score-meter").style.transform="scale(1)";
