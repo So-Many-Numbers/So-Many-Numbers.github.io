@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>So Many Numbers!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
@@ -14,19 +15,33 @@
         <div id="active-gauge"></div>
       </div>
     </div>
+    <div class="container" style="margin-bottom:-200px;height:200px;">
 
+<div class="row">
+  <div class="col-5 col-sm-4 col-lg-3">
+    <div id="score-meter">
 
+    </div>
+  </div>
+  <div class="col-2 col-sm-4 col-lg-6">
+    <div id="home-area-outside">
+      <span id="home-area"></span>
+    </div>
+  </div>
+  <div class="col-5 col-sm-4 col-lg-3">
+    <div id="timer-area-outside">
+      <span id="timer-area"></span>
+    </div>
+  </div>
+    </div>
+  </div>
     <div class="container" style="height:100%;">
       <div class="row" style="height:100%;">
-      <div class="col-2">
-        <div id="score-meter">
-
-        </div>
-      </div>
-      <div class="col-8" id="problem-area">
+      <div class="col-12" id="problem-area">
         <div id="non-math-area">
 
         </div>
+        <div id="encouragement"></div>
         <table id="math-problems">
           <tbody>
             <tr id="set1">
@@ -52,10 +67,6 @@
           </tbody>
         </table>
 
-      </div>
-      <div class="col-2">
-        <div id="timer-area">
-        </div>
       </div>
             </div>
     </div>
