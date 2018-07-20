@@ -6,7 +6,10 @@ let intime;
 let currentTime;
 let bg1 = false;
 let bg2 = false;
+var highScore = null;
 
+if (localStorage.getItem("soManyNumbersHighScore")) {
+highScore = localStorage.getItem("soManyNumbersHighScore");}
 
 function generateGame(numberOfProblems) {
 
@@ -122,8 +125,13 @@ function checkAnswer() {
       clearInterval(intime);
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
+      if(Number(currentTime) < Number(highScore) || highScore === null) {
+        highScore=currentTime;localStorage.setItem("soManyNumbersHighScore", currentTime);
+      }
       document.getElementById("non-math-area").innerHTML=`
         <p style="font-size:45px;">Congrats!</p>
+        <p>Your score: ` + currentTime + ` seconds</p>
+        <p>Your high score: ` + highScore + ` seconds</p>
         <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
         <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
       `;
@@ -166,6 +174,7 @@ function checkAnswer() {
 
     if (gaugePercent >= 100) {
       document.getElementById("encouragement").style.opacity = 0;
+      document.getElementById("encouragement").style.display = "none";
       document.getElementById("gameBG").style.backgroundColor="#fafafa";
       document.getElementById("timer-area").style.backgroundColor="#e2e239";
     }
