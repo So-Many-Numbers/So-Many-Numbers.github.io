@@ -31,7 +31,6 @@ h1 {
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-
 }
 
     button: active {
@@ -80,4 +79,10 @@ hr {
     width:100px;
     text-align:center;
     top:30px;
-  }
+}
+
+img {
+width:75px;
+top: 0;
+
+}
