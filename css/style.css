@@ -56,7 +56,7 @@ hr {
     margin-bottom: 25px;
 }
 .side-bar {
-    background: #278cbf;
+    background: #39b771;
     color: #ddd;
     padding: 1em;
 
@@ -75,7 +75,7 @@ hr {
     padding: 0.5em;
     position: absolute;
     left: -60px;
-    background-color: #278cbf;
+    background-color: #39b771;
     transform: rotate(270deg);
     width:100px;
     text-align:center;
