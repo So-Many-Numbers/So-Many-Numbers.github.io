@@ -76,6 +76,7 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
   document.getElementById("percentageBar").innerHTML="0% Complete"
+  document.getElementById("home-area").innerHTML=`<a title="Back to title" onclick="location.href='../index.html'">⌂</a>`;
 }, 3000);
 }
 
