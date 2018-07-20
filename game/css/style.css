@@ -212,3 +212,13 @@ justify-content: center;
     }
 
 }
+
+#home-button {
+  height:32px;
+}
+
+@media (max-width: 575px) {
+  #home-button {
+    height:20px;
+  }
+}
