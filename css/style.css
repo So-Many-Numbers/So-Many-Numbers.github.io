@@ -9,7 +9,7 @@ body {
 
 h1 {
   font-size: 32px;
-  font-family: "Sans-Serif,"Arial;
+  font-family: "Sans-Serif", Arial;
 
 }
 .center {
@@ -22,7 +22,7 @@ h1 {
 .button-1 {
     border: none;
     padding: 15px 25px;
-    font-size: 36px;
+    font-size: 35px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -47,7 +47,7 @@ text-align: center;
 background-color:#1da2e6;
 color:#ffffff;
 font-family:"Sans-Serif", Arial;
-font-size: 32px;
+font-size: 31px;
   }
 
 hr {
@@ -85,4 +85,19 @@ img {
 width:75px;
 top: 0;
 
+}
+
+@media (max-width: 440px) {
+  img {
+    width:50px;
+  }
+  .navbar {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    font-size: 23px;
+  }
 }
