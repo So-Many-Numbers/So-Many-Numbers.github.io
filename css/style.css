@@ -22,7 +22,7 @@ h1 {
 .button-1 {
     border: none;
     padding: 15px 25px;
-    font-size: 24px;
+    font-size: 36px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -46,8 +46,8 @@ text-align:right;
 text-align: center;
 background-color:#1da2e6;
 color:#ffffff;
-font-family:"Sans-Serif," Arial;
-font-size: 25px;
+font-family:"Sans-Serif", Arial;
+font-size: 32px;
   }
 
 hr {
