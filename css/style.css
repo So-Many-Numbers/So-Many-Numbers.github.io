@@ -5,6 +5,15 @@ body {
   background-color: #d3d3d3;
   height: 100%;
   overflow:hidden;
+  display:grid;
+  grid-template-columns:100%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "navigation"
+                       "content";
+}
+
+.navigation {
+  grid-area: navigation;
 }
 
 h1 {
@@ -17,7 +26,8 @@ h1 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
+  overflow:auto;
+  grid-area: content;
 }
 .button-1 {
     border: none;
@@ -84,7 +94,21 @@ hr {
 img {
 width:75px;
 top: 0;
+}
 
+.authors {
+  margin-top:120px;
+  color: #000;
+  font-size:16px;
+}
+
+.authorName {
+  color:#0e5ab9 !important;
+  cursor:pointer;
+}
+
+.authorName:hover {
+  color:#03a003 !important;
 }
 
 @media (max-width: 440px) {
@@ -93,6 +117,9 @@ top: 0;
   }
   .navbar {
     font-size: 27px;
+  }
+  .authors {
+    margin-top:100px;
   }
 }
 
