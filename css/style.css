@@ -23,8 +23,6 @@ h1 {
 }
 #center {
   display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   grid-area: content;
   overflow:auto;
@@ -132,11 +130,13 @@ top: 0;
 }
 
 #ashleyInfo {
+  margin:auto;
   width:80%;
   display:none;
 }
 
 #timothyInfo {
+  margin:auto;
   width:80%;
   display:none;
 }
@@ -147,6 +147,10 @@ top: 0;
 
 h3 {
   margin-bottom:1em;
+}
+
+#gameStart {
+  margin:auto;
 }
 
 @media (max-width: 440px) {
