@@ -17,3 +17,14 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+function authorInfo(name) {
+  document.getElementById("gameStart").style.display="none";
+  document.getElementById("authors").style.display="none";
+  if (name==="Ashley") {
+    document.getElementById("ashleyInfo").style.display="block";
+  }
+  if (name==="Timothy") {
+    document.getElementById("timothyInfo").style.display="block";
+  }
+}

@@ -21,7 +21,7 @@ h1 {
   font-family: "Sans-Serif", Arial;
 
 }
-.center {
+#center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +96,7 @@ width:75px;
 top: 0;
 }
 
-.authors {
+#authors {
   margin-top:120px;
   color: #000;
   font-size:16px;
@@ -109,6 +109,14 @@ top: 0;
 
 .authorName:hover {
   color:#03a003 !important;
+}
+
+#ashleyInfo {
+  display:none;
+}
+
+#timothyInfo {
+  display:none;
 }
 
 @media (max-width: 440px) {
