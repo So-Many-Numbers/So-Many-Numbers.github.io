@@ -28,3 +28,10 @@ function authorInfo(name) {
     document.getElementById("timothyInfo").style.display="block";
   }
 }
+
+function goBack() {
+  document.getElementById("ashleyInfo").style.display="none";
+  document.getElementById("timothyInfo").style.display="none";
+  document.getElementById("gameStart").style.display="block";
+  document.getElementById("authors").style.display="block";
+}
