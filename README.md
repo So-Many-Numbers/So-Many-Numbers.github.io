@@ -6,3 +6,5 @@ It's a math game created during the Make School Summer Academy 2018 hackathon. S
 We know you have what it takes. So have at it!
 
 // Ashley Caswell and Timothy Hsu
+
+MIT License
