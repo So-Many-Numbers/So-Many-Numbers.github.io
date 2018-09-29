@@ -129,7 +129,7 @@ function checkAnswer() {
         highScore=currentTime;localStorage.setItem("soManyNumbersHighScore", currentTime);
       }
       document.getElementById("non-math-area").innerHTML=`
-        <p style="font-size:45px;">Congrats!</p>
+        <p class="congrats">Congrats!</p>
         <p>Your score: ` + currentTime + ` seconds</p>
         <p>Your high score: ` + highScore + ` seconds</p>
         <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
