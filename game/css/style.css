@@ -75,7 +75,7 @@ background-color:#dadada;
 @media (max-width: 575px) {
   #math-problems td {
     font-size:42px;
-    padding-bottom:0em;
+    padding-bottom:0.02em;
   }
 }
 
@@ -230,14 +230,19 @@ justify-content: center;
 
 @media (max-height: 500px) {
   .congrats{
-      font-size:36px;
+      font-size:35px;
 
   }
   .button-again {
       padding: 10px 18px;
-      font-size: 22px;
-      border-radius: 8px;
+      font-size: 21px;
+      border-radius: 10px;
       box-shadow: 0 6px #999;
 
   }
+}
+
+input {
+  margin:0;
+  padding:1px;
 }
