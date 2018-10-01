@@ -63,7 +63,7 @@ h1 {
     }
 .navbar {
   border: none;
-padding:15px 25px;
+padding:10px 25px;
 text-align:right;
 text-align: center;
 background-color:#1da2e6;
@@ -104,8 +104,9 @@ hr {
 }
 
 img {
-width:75px;
+width:60px;
 top: 0;
+border-radius:8px;
 }
 
 #authors {
@@ -155,7 +156,7 @@ h3 {
 
 @media (max-width: 440px) {
   img {
-    width:50px;
+    width:45px;
   }
   .navbar {
     font-size: 27px;
