@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  font-family:"Noto Sans", sans-serif;
   height:100%;
 }
 
@@ -245,4 +246,7 @@ justify-content: center;
 input {
   margin:0;
   padding:1px;
+  background-color:#fff;
+  color:#000;
+  border:1px solid #a9a9a9;
 }
