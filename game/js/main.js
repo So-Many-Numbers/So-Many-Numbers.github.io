@@ -6,10 +6,42 @@ let intime;
 let currentTime;
 let bg1 = false;
 let bg2 = false;
-var highScore = null;
 
-if (localStorage.getItem("soManyNumbersHighScore")) {
-highScore = localStorage.getItem("soManyNumbersHighScore");}
+let saveData = {
+  asmdHighScore: null,
+  asHighScore: null,
+  mdHighScore: null
+}
+
+if(typeof(localStorage) !== "undefined") {
+  if (localStorage.getItem("soManyNumbersSaveData")) {
+    const parsedData = JSON.parse(localStorage.getItem("soManyNumbersSaveData"));
+    for (let i = 0; i < Object.keys(parsedData).length; i += 1) {
+      if (saveData.hasOwnProperty(Object.getOwnPropertyNames(parsedData)[i])) {
+        saveData[Object.keys(saveData)[Object.keys(saveData).indexOf(Object.getOwnPropertyNames(parsedData)[i])]]
+        = parsedData[Object.keys(parsedData)[i]];
+      }
+    }
+  }
+}
+
+var isNotSafariPrivate = function() {
+  var doesItWork = 'test', storage = window.sessionStorage;
+  try {
+    storage.setItem(doesItWork, '1');
+    storage.removeItem(doesItWork);
+    return true;
+  }
+  catch (error) {
+    return false;
+  }
+}
+
+function save() {
+  if ( isNotSafariPrivate() ) {
+    localStorage.setItem('soManyNumbersSaveData', JSON.stringify(saveData));
+  }
+}
 
 function generateGame(numberOfProblems) {
 
@@ -124,15 +156,16 @@ function checkAnswer() {
       clearInterval(intime);
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
-      if(Number(currentTime) < Number(highScore) || highScore === null) {
-        highScore=currentTime;localStorage.setItem("soManyNumbersHighScore", currentTime);
+      if(Number(currentTime) < Number(saveData.asmdHighScore) || saveData.asmdHighScore === null) {
+        saveData.asmdHighScore=currentTime;
+        save();
       }
       document.getElementById("non-math-area").innerHTML=`
         <p class="congrats">Congrats!</p>
         <div class="results">
           <div class="mathMode" id="mathMode2">+ - x ÷</div>
           <div>Your Score: ` + currentTime + ` seconds</div>
-          <div>High Score: ` + highScore + ` seconds</div>
+          <div>High Score: ` + saveData.asmdHighScore + ` seconds</div>
         </div>
         <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
         <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
