@@ -130,6 +130,7 @@ function checkAnswer() {
       document.getElementById("non-math-area").innerHTML=`
         <p class="congrats">Congrats!</p>
         <div class="results">
+          <div class="mathMode" id="mathMode2">+ - x ÷</div>
           <div>Your Score: ` + currentTime + ` seconds</div>
           <div>High Score: ` + highScore + ` seconds</div>
         </div>

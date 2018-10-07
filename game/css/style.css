@@ -28,7 +28,7 @@ body {
   margin:0 0 0.25em 0;
 }
 
-#mathLevel {
+.mathMode {
   font-family:courier,serif;
   font-size:9vmin;
   opacity:0.6;
@@ -209,8 +209,8 @@ body {
 
 .button-again {
     border: none;
-    padding: 6% 9%;
-    font-size: 7.5vmin;
+    padding: 5% 8%;
+    font-size: 7vmin;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -235,14 +235,18 @@ body {
 }
 
 .congrats {
-  font-size:13vmin;
+  font-size:11vmin;
   margin-top:0;
-  margin-bottom:12px;
+  margin-bottom:0;
+}
+
+#mathMode2 {
+  margin:0;
 }
 
 .results {
   font-size:6vmin;
-  line-height:2;
+  line-height:1.8;
   margin-bottom:12px;
 }
 
@@ -256,7 +260,7 @@ body {
     font-size:5.4vmin;
   }
 
-  #mathLevel {
+  .mathMode {
     font-size:6.9vmin;
   }
 
@@ -268,8 +272,12 @@ body {
     font-size:6.15vmin;
   }
 
-  #math-problems, .congrats {
+  #math-problems {
     font-size:10vmin;
+  }
+
+  .congrats {
+    font-size:8.5vmin;
   }
 
   .results {
@@ -277,7 +285,7 @@ body {
   }
 
   .button-again {
-    font-size:5.7vmin;
+    font-size:5.4vmin;
   }
 
   #home-button {
