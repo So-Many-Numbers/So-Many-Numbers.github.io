@@ -1,5 +1,5 @@
-let expressions = [];
-let solutions = [];
+const expressions = [];
+const solutions = [];
 let currentExpression = 0;
 let numberProblems = 0;
 let intime;

@@ -6,6 +6,11 @@ body {
   margin:0;
   font-family:"Noto Sans", sans-serif;
   height:100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  touch-action: manipulation;
 }
 
 #countdown {
