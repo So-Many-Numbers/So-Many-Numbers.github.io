@@ -13,35 +13,35 @@ highScore = localStorage.getItem("soManyNumbersHighScore");}
 
 function generateGame(numberOfProblems) {
 
-  document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">3</p>`;
-  setTimeout(function(){ document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">2</p>`; }, 1000);
-  setTimeout(function(){ document.getElementById("non-math-area").innerHTML=`<p style="font-size:40px;">1</p>`; }, 2000);
+  document.getElementById("countdownNumber").innerHTML="3";
+  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="2"; }, 1000);
+  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="1"; }, 2000);
 
-setTimeout(function(){
-document.getElementById("non-math-area").style.display = "none";
-  document.getElementById("math-problems").style.display = "block";
-  currentTime = 0;
-  intime=setInterval(stopwatch,100);
-  offset = Date.now();
-  document.getElementById("math-answer").focus();
-  numberProblems = numberOfProblems;
+  setTimeout(() => {
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("main-game").style.display = "grid";
+    currentTime = 0;
+    intime = setInterval(stopwatch,100);
+    offset = Date.now();
+    document.getElementById("math-answer").focus();
+    numberProblems = numberOfProblems;
 
     document.getElementById("score-meter").innerHTML=numberProblems + " left";
 
-  for (var i = 0; i < numberOfProblems; i++) {
-    let operatorRand = Math.floor(Math.random() * 4);
-    let operator;
-    let firstNumber;
-    let secondNumber;
-    let solution;
+    for (var i = 0; i < numberOfProblems; i++) {
+      let operatorRand = Math.floor(Math.random() * 4);
+      let operator;
+      let firstNumber;
+      let secondNumber;
+      let solution;
 
-    if (operatorRand == 0) {
-      firstNumber = Math.floor((Math.random() * 20) + 1);
-      secondNumber = Math.floor((Math.random() * 20) + 1);
-      solution = firstNumber + secondNumber;
-      expressions.push(firstNumber + " + " + secondNumber + " =");
-      solutions.push(solution);
-    }
+      if (operatorRand == 0) {
+        firstNumber = Math.floor((Math.random() * 20) + 1);
+        secondNumber = Math.floor((Math.random() * 20) + 1);
+        solution = firstNumber + secondNumber;
+        expressions.push(firstNumber + " + " + secondNumber + " =");
+        solutions.push(solution);
+      }
 
     else if (operatorRand == 1) {
       firstNumber = Math.floor((Math.random() * 30) + 1);
@@ -81,15 +81,14 @@ document.getElementById("non-math-area").style.display = "none";
   document.getElementById("row3").innerHTML=expressions[currentExpression];
   document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
   document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
-  document.getElementById("percentageBar").innerHTML="0% Complete"
-  document.getElementById("home-area").innerHTML=`<a title="Back to title" onclick="location.href='../index.html'"><img id="home-button" src="../img/home-button.png"></a>`;
+  document.getElementById("percentageBar").innerHTML="0% Complete";
 }, 3000);
 }
 
 document.getElementById("math-answer").addEventListener("input", checkAnswer);
 
 function checkAnswer() {
-  if (document.getElementById("math-answer").value == solutions[currentExpression]) {
+  if (Number(document.getElementById("math-answer").value) === solutions[currentExpression]) {
     currentExpression += 1;
 
     if (currentExpression == 1) {
@@ -130,8 +129,10 @@ function checkAnswer() {
       }
       document.getElementById("non-math-area").innerHTML=`
         <p class="congrats">Congrats!</p>
-        <p>Your score: ` + currentTime + ` seconds</p>
-        <p>Your high score: ` + highScore + ` seconds</p>
+        <div class="results">
+          <div>Your Score: ` + currentTime + ` seconds</div>
+          <div>High Score: ` + highScore + ` seconds</div>
+        </div>
         <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
         <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
       `;
@@ -183,10 +184,11 @@ function checkAnswer() {
     document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
     document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
     document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left</span>";
-    document.getElementById("score-meter").style.transform="scale(1.1)";
     document.getElementById("set3").style.transform="scale(1.05)";
-    setTimeout(function(){ document.getElementById("score-meter").style.transform="scale(1)";
-  document.getElementById("set3").style.transform="scale(1)";}, 100);
+    document.getElementById("math-answer").classList.add("math-box-right");
+    setTimeout(() => {
+  document.getElementById("set3").style.transform="scale(1)";
+document.getElementById("math-answer").classList.remove("math-box-right");}, 100);
   }
 }
 

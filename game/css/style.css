@@ -3,115 +3,96 @@ html {
 }
 
 body {
+  margin:0;
   font-family:"Noto Sans", sans-serif;
   height:100%;
 }
 
-.front-center {
+#countdown {
+  height:85%;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
+  flex-direction:column;
+}
+
+#soManyTitle {
+  font-family:courier, serif;
+  font-size:7vmin;
+  opacity:0.6;
+  margin:0 0 0.25em 0;
+}
+
+#mathLevel {
+  font-family:courier,serif;
+  font-size:9vmin;
+  opacity:0.6;
+  margin:0 0 0.25em 0;
+}
+
+#countdownNumber {
+  font-family:"noto sans", sans-serif;
+  font-size:14vmin;
+  margin:0 0 0 0;
+}
+
+#main-game {
   height:100%;
+  display:none;
+  grid-template-rows: auto 1fr 5%;
 }
 
-.footer {
-  margin-top:-45px;
-  text-align:center;
-}
-
-.progress-bar {
-  background-color:rgba(0,0,0,0);
-  margin-bottom:-60px;
-  height:60px;
-
-}
-
-#gauge {
-background-color:#dadada;
+.HUD {
   margin:0 auto;
-  width:97%;
-  height:28px;
+  width:90%;
+}
+
+.math-problem-grid {
+  display:flex;
+}
+
+.gauge {
+  background-color:#dadada;
+  margin:16px 0 15px 0;
+  height:30px;
   border-radius:10px;
-  box-shadow:0 1px 4px 0 rgba(0,0,0,.2)
+  box-shadow:0 1px 4px 0 rgba(0,0,0,.2);
+  display:flex;
+  align-items:center;
 }
 
 #active-gauge {
   background-color:#1da2e6;
-  height:28px;
+  height:30px;
   width:0%;
     border-radius:10px;
   transition: width 0.2s ease-out;
 }
 
-#math-problems tr {
-  opacity:0.25;
+#percentageBar {
+  color:#fff;
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  font-size:17px;
 }
 
-#math-problems tr:nth-child(1) {
-  transform: scale(0.7);
-}
-#math-problems tr:nth-child(2) {
-  transform: scale(0.9);
-}
-#math-problems tr:nth-child(3) {
-  opacity:1;
-  transform: scale(1);
-  transition: transform 0.1s;
-}
-
-#math-problems tr:nth-child(4) {
-  transform: scale(0.9);
-}
-#math-problems tr:nth-child(5) {
-  transform: scale(0.7);
-}
-
-#math-problems td {
-  font-size:55px;
-  padding-bottom:0.15em;
-  text-align:center;
-}
-
-@media (max-width: 575px) {
-  #math-problems td {
-    font-size:42px;
-    padding-bottom:0.02em;
-  }
-}
-
-#math-problems td:first-child {
-  text-align: center;
-  width:5em;
-
-}
-
-#math-answer {
-  text-align:center;
-  width:2em;
-}
-
-#gauge-fraction {
-
-}
-
-#problem-area {
-  display: flex;
-align-items: center;
-justify-content: center;
+.currentGameStats {
+  width:92%;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 16% 1fr;
 }
 
 #score-meter {
-  text-align:center;
-  margin-top:60px;
-  font-size:38px;
-  transition: transform 0.1s;
+  font-size:8vmin;
+  padding-left:10px;
 }
 
 #timer-area-outside {
-  text-align:center;
-  margin-top:60px;
-  font-size:38px;
+  text-align:right;
+  font-size:8vmin;
+  white-space:nowrap;
 }
 
 #timer-area {
@@ -121,66 +102,99 @@ justify-content: center;
 }
 
 #home-area-outside {
-  text-align:center;
-  margin-top:60px;
-  font-size:38px;
-}
-
-#encouragement {
-  text-align:center;
-  padding-bottom:140px;
-  font-size:32px;
-  position:absolute;
-  z-index:2;
-  opacity:0;
-}
-
-#encouragement-words {
-  background-color:#d0ebfb;
-  border-radius:12px;
-  padding: 5px 15px;
-  transition: 0.5s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 #home-area {
-  position:relative;
-  z-index:2;
   cursor:pointer;
   opacity:0.25;
+  display:inline-flex;
+  align-items:flex-end;
 }
 
 #home-area:hover {
   opacity:1;
 }
 
-@media (max-width: 575px) {
-
-  #score-meter {
-    font-size:24px;
-  }
-
-  #timer-area-outside {
-    font-size:24px;
-  }
-
-  #home-area-outside {
-    font-size:24px;
-  }
-
-  #encouragement {
-    font-size:20px;
-    padding-bottom:120px;
-  }
-}
-
-#math-problems {
-  margin-top:5%;
-  text-align:center;
-  display:none;
+.problem-area {
+  margin:auto;
+  position:relative;
 }
 
 #non-math-area {
   text-align:center;
+}
+
+#encouragement {
+  text-align:center;
+  font-size:8vmin;
+  position:absolute;
+  left:50%;
+  top:23%;
+  transform: translateX(-50%);
+  z-index:2;
+  opacity:0;
+  color:#000;
+}
+
+#encouragement-words {
+  background-color:#d0ebfb;
+  border-radius:12px;
+  padding: 4px 15px;
+}
+
+#math-problems {
+  text-align:center;
+  font-size:13vmin;
+}
+
+#set1, #set5 {
+  transform: scale(0.65);
+  opacity:0.13;
+}
+
+#set2, #set4 {
+  transform: scale(0.9);
+  opacity:0.26;
+}
+
+#set3 {
+  transform: scale(1);
+  transition: transform 0.1s;
+}
+
+#set1, #set2, #set3, #set4, #set5 {
+  padding-bottom:0.08em;
+}
+
+#set1 *, #set2 *, #set3 *, #set4 *, #set5 * {
+  display:inline-block;
+}
+
+.math-box {
+  text-align:center;
+  width:2em;
+  margin:0;
+  padding:1px;
+  background-color:#fff;
+  color:#000;
+  border:1px solid #a9a9a9;
+  font-size:inherit;
+  font-family:inherit;
+}
+
+.math-box:focus {
+  outline: none;
+  border-color: #5473da;
+  box-shadow: 0 0 6px #5198e0;
+}
+
+.math-box-right:focus {
+  outline: none;
+  border-color: #45b56d;
+  box-shadow: 0 0 9px #51e07d;
 }
 
 #gameBG {
@@ -188,16 +202,10 @@ justify-content: center;
   transition: 0.2s;
 }
 
-#percentageBar {
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
-}
-
 .button-again {
     border: none;
-    padding: 15px 25px;
-    font-size: 24px;
+    padding: 6% 9%;
+    font-size: 7.5vmin;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -206,47 +214,120 @@ justify-content: center;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-    button:active {
-      border: 2px solid blue;
-    }
-    button:focus {
-      border: 2px solid blue;
-    }
+    transition:background-color 0.15s;
+}
 
+.button-again:hover {
+  background-color:#e86198;
+}
+
+.button-again:active {
+  background-color:#ef4e86;
 }
 
 #home-button {
-  height:32px;
+  height:6.5vmin;
 }
 
 .congrats {
-  font-size:45px;
+  font-size:13vmin;
+  margin-top:0;
+  margin-bottom:12px;
 }
 
-@media (max-width: 575px) {
-  #home-button {
-    height:20px;
-  }
+.results {
+  font-size:6vmin;
+  line-height:2;
+  margin-bottom:12px;
 }
 
-@media (max-height: 500px) {
-  .congrats{
-      font-size:35px;
+@media (min-width: 420px) and (min-height: 420px) {
 
+  body {
+    overflow-y:hidden;
   }
+
+  #soManyTitle {
+    font-size:5.4vmin;
+  }
+
+  #mathLevel {
+    font-size:6.9vmin;
+  }
+
+  #countdownNumber {
+    font-size:10.8vmin;
+  }
+
+  #score-meter, #timer-area-outside, #encouragement {
+    font-size:6.15vmin;
+  }
+
+  #math-problems, .congrats {
+    font-size:10vmin;
+  }
+
+  .results {
+    font-size:4.6vmin;
+  }
+
   .button-again {
-      padding: 10px 18px;
-      font-size: 21px;
-      border-radius: 10px;
-      box-shadow: 0 6px #999;
+    font-size:5.7vmin;
+  }
 
+  #home-button {
+    height:5vmin;
   }
 }
 
-input {
-  margin:0;
-  padding:1px;
-  background-color:#fff;
-  color:#000;
-  border:1px solid #a9a9a9;
+@media (min-width: 1200px) {
+  .HUD {
+    width:1080px;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  .gauge {
+    margin:24px 0 15px 0;
+    height:36px;
+  }
+
+  #active-gauge {
+    height:36px;
+  }
+
+  #percentageBar {
+    font-size:20px;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 950px) {
+  .gauge {
+    margin:40px 0 25px 0;
+    height:50px;
+    border-radius:18px;
+  }
+
+  #active-gauge {
+    height:50px;
+    border-radius:18px;
+  }
+
+  #percentageBar {
+    font-size:28px;
+  }
+
+  #encouragement-words {
+    border-radius:20px;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 1220px) {
+  #score-meter, #timer-area-outside {
+    font-size:75px;
+  }
+
+  #home-button {
+    height:61px;
+  }
 }

@@ -1,77 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="format-detection" content="telephone=no">
     <title>So Many Numbers!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
   </head>
+
   <body id="gameBG" onload="generateGame(30)">
 
-    <div class="container progress-bar">
-      <div id="gauge">
-        <div id="percentageBar"></div>
-        <div id="active-gauge"></div>
-      </div>
+    <div id="countdown">
+      <p id="soManyTitle">So Many Numbers!</p>
+      <p id="mathLevel">+ - x ÷</p>
+      <p id="countdownNumber"></p>
     </div>
-    <div class="container" style="margin-bottom:-200px;height:200px;">
 
-<div class="row">
-  <div class="col-5 col-sm-4 col-lg-3">
-    <div id="score-meter">
+    <div id="main-game">
 
-    </div>
-  </div>
-  <div class="col-2 col-sm-4 col-lg-6">
-    <div id="home-area-outside">
-      <span id="home-area"></span>
-    </div>
-  </div>
-  <div class="col-5 col-sm-4 col-lg-3">
-    <div id="timer-area-outside">
-      <span id="timer-area"></span>
-    </div>
-  </div>
-    </div>
-  </div>
-    <div class="container" style="height:100%;">
-      <div class="row" style="height:100%;">
-      <div class="col-12" id="problem-area">
-        <div id="non-math-area">
+      <div class="HUD">
 
+        <div class="gauge">
+          <div id="percentageBar"></div>
+          <div id="active-gauge"></div>
         </div>
-        <div id="encouragement"></div>
-        <table id="math-problems">
-          <tbody>
-            <tr id="set1">
-              <td id="row1">&nbsp;</td>
-              <td id="solution1">&nbsp;</td>
-            </tr>
-            <tr id="set2">
-              <td id="row2">&nbsp;</td>
-              <td id="solution2">&nbsp;</td>
-            </tr>
-            <tr id="set3">
-              <td id="row3"> </td>
-              <td><input id="math-answer" autocomplete="off" maxlength="3" type="tel" novalidate></td>
-            </tr>
-            <tr id="set4">
-              <td id="row4">&nbsp;</td>
-              <td></td>
-            </tr>
-            <tr id="set5">
-              <td id="row5">&nbsp;</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div class="currentGameStats">
+          <div id="score-meter"></div>
+          <div id="home-area-outside">
+            <a id="home-area" title="Back to title" onclick="location.href='../index.html'">
+              <img id="home-button" src="../img/home-button.png">
+            </a>
+          </div>
+          <div id="timer-area-outside">
+            <span id="timer-area"></span>
+          </div>
+        </div>
 
       </div>
+
+      <div class="math-problem-grid">
+        <div class="problem-area">
+          <div id="non-math-area"></div>
+          <div id="encouragement"></div>
+          <div id="math-problems">
+            <div id="set1">
+              <div id="row1">&nbsp;</div>
+              <div id="solution1">&nbsp;</div>
             </div>
+            <div id="set2">
+              <div id="row2">&nbsp;</div>
+              <div id="solution2">&nbsp;</div>
+            </div>
+            <div id="set3">
+              <div id="row3">&nbsp;</div>
+              <div>
+                <input class="math-box" id="math-answer" autocomplete="off" maxlength="3" type="tel" novalidate>
+              </div>
+            </div>
+            <div id="set4">
+              <div id="row4">&nbsp;</div>
+              <div></div>
+            </div>
+            <div id="set5">
+              <div id="row5">&nbsp;</div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blank-space"></div>
+
     </div>
+
     <script src="js/main.js" charset="utf-8"></script>
   </body>
 </html>

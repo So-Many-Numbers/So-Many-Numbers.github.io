@@ -2,6 +2,7 @@ html {
   height:100%;
 }
 body {
+  font-family:"noto sans", sans-serif;
   background-color: #d3d3d3;
   height: 100%;
   overflow:hidden;
@@ -82,7 +83,7 @@ hr {
     padding: 1em;
 
     position: absolute;
-    right: -520px;
+    right: -540px;
     top: 200px;
 
     transition: 300ms;
