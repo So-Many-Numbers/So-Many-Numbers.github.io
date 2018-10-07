@@ -117,10 +117,18 @@ function generateGame(numberOfProblems) {
 }, 3000);
 }
 
+document.getElementById("math-answer").addEventListener("keypress", function (e) {
+  if (e.key.length === 1 && isNaN(e.key) && !e.ctrlKey || e.keyCode === 32) {
+    e.preventDefault();
+  }
+});
+
 document.getElementById("math-answer").addEventListener("input", checkAnswer);
 
 function checkAnswer() {
-  if (Number(document.getElementById("math-answer").value) === solutions[currentExpression]) {
+  if (Number(document.getElementById("math-answer").value) === solutions[currentExpression]
+&& document.getElementById("math-answer").value.length > 0) {
+    console.log(document.getElementById("math-answer").value.length);
     currentExpression += 1;
 
     if (currentExpression == 1) {
@@ -242,10 +250,3 @@ return d;
 function playitagain() {
   location.reload();
 }
-
-document.querySelector("input").addEventListener("keypress", function (e) {
-  if (
-    e.key.length === 1 && isNaN(e.key) && !e.ctrlKey) {
-    e.preventDefault();
-  }
-});
