@@ -45,6 +45,43 @@ function save() {
 
 function generateGame(numberOfProblems) {
 
+
+    let add = false;
+    let subtract = false;
+    let multiply = false;
+    let divide = false;
+    let mathModeDisplay = "";
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const modeParam = urlParams.get('mode');
+    if (!modeParam || !modeParam.includes("a") && !modeParam.includes("s")
+      && !modeParam.includes("m") && !modeParam.includes("d")) {
+      add = true;
+      subtract = true;
+      multiply = true;
+      divide = true;
+      mathModeDisplay = "+-x÷";
+    } else {
+      if (modeParam.includes("a")) {
+        add = true;
+        mathModeDisplay += "+";
+      }
+      if (modeParam.includes("s")) {
+        subtract = true;
+        mathModeDisplay += "-";
+      }
+      if (modeParam.includes("m")) {
+        multiply = true;
+        mathModeDisplay += "x";
+      }
+      if (modeParam.includes("d")) {
+        divide = true;
+        mathModeDisplay += "÷";
+      }
+    }
+    document.getElementsByClassName("mathMode")[0].innerHTML=mathModeDisplay;
+    document.getElementsByClassName("mathMode")[1].innerHTML=mathModeDisplay;
+
   document.getElementById("countdownNumber").innerHTML="3";
   setTimeout(() => { document.getElementById("countdownNumber").innerHTML="2"; }, 1000);
   setTimeout(() => { document.getElementById("countdownNumber").innerHTML="1"; }, 2000);
@@ -60,7 +97,7 @@ function generateGame(numberOfProblems) {
 
     document.getElementById("score-meter").innerHTML=numberProblems + " left";
 
-    for (var i = 0; i < numberOfProblems; i++) {
+    for (let i = 0; i < numberOfProblems; i+=1) {
       let operatorRand = Math.floor(Math.random() * 4);
       let operator;
       let firstNumber;
@@ -138,17 +175,9 @@ function checkAnswer() {
         saveData.asmdHighScore=currentTime;
         save();
       }
-      document.getElementById("non-math-area").innerHTML=`
-        <p class="congrats">Congrats!</p>
-        <div class="results">
-          <div class="mathMode" id="mathMode2">+ - x ÷</div>
+      document.getElementById("results").innerHTML=`
           <div>Your Score: ` + currentTime + ` seconds</div>
           <div>High Score: ` + saveData.asmdHighScore + ` seconds</div>
-        </div>
-        <div id="buttonsDiv">
-        <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
-        <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
-        </div>
       `;
       setTimeout(() => { document.getElementById("buttonsDiv").style.opacity=1; }, 100);
     }
