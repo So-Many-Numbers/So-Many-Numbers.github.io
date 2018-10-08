@@ -142,6 +142,7 @@ body {
   z-index:2;
   opacity:0;
   color:#000;
+  transition:opacity 0.75s;
 }
 
 #encouragement-words {
@@ -248,6 +249,15 @@ body {
   font-size:6vmin;
   line-height:1.8;
   margin-bottom:12px;
+}
+
+#buttonsDiv {
+  opacity:0;
+  transition:opacity 0.4s;
+}
+
+.notransition {
+  transition: none !important;
 }
 
 @media (min-width: 420px) and (min-height: 420px) {

@@ -108,12 +108,7 @@ function generateGame(numberOfProblems) {
 
   }
 
-
-
-  document.getElementById("row3").innerHTML=expressions[currentExpression];
-  document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
-  document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
-  document.getElementById("percentageBar").innerHTML="0% Complete";
+  displayProblems();
 }, 3000);
 }
 
@@ -127,40 +122,15 @@ document.getElementById("math-answer").addEventListener("input", checkAnswer);
 
 function checkAnswer() {
   if (Number(document.getElementById("math-answer").value) === solutions[currentExpression]
-&& document.getElementById("math-answer").value.length > 0) {
-    console.log(document.getElementById("math-answer").value.length);
+      && document.getElementById("math-answer").value.length > 0) {
+
     currentExpression += 1;
 
-    if (currentExpression == 1) {
-      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
-      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
-      document.getElementById("row3").innerHTML=expressions[currentExpression];
-      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
-      document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
-      document.getElementById("math-answer").value = "";
+    if (currentExpression !== numberProblems) {
+      displayProblems();
     }
 
-    else if (numberProblems - currentExpression == 2) {
-      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
-      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
-      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
-      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
-      document.getElementById("row3").innerHTML=expressions[currentExpression];
-      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
-      document.getElementById("row5").innerHTML="&nbsp;"
-      document.getElementById("math-answer").value = "";
-    }
-
-    else if (numberProblems - currentExpression == 1) {
-      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
-      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
-      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
-      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
-      document.getElementById("row3").innerHTML=expressions[currentExpression];
-      document.getElementById("row4").innerHTML="&nbsp;";
-      document.getElementById("math-answer").value = "";
-    }
-    else if (numberProblems == currentExpression) {
+    else {
       clearInterval(intime);
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
@@ -175,42 +145,46 @@ function checkAnswer() {
           <div>Your Score: ` + currentTime + ` seconds</div>
           <div>High Score: ` + saveData.asmdHighScore + ` seconds</div>
         </div>
+        <div id="buttonsDiv">
         <p><button class="button-again" onclick="playitagain()">Play Again</button></p>
         <p><button class="button-again" onclick="location.href='../index.html'">Back to Title</button></p>
+        </div>
       `;
+      setTimeout(() => { document.getElementById("buttonsDiv").style.opacity=1; }, 100);
     }
-    else {
-      document.getElementById("row1").innerHTML=expressions[currentExpression-2];
-      document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
-      document.getElementById("row2").innerHTML=expressions[currentExpression-1];
-      document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
-      document.getElementById("row3").innerHTML=expressions[currentExpression];
-      document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
-      document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
-      document.getElementById("math-answer").value = "";
-    }
+
+    document.getElementById("math-answer").value = "";
 
     let gaugePercent = (currentExpression / numberProblems)*100;
 
     if (gaugePercent >= 33 && gaugePercent<66) {
-      if (bg1==false) {
-      bg1 = true;
-      document.getElementById("gameBG").style.backgroundColor="#c9ead0";
-      document.getElementById("encouragement").style.opacity = 1;
-      setTimeout(function(){document.getElementById("encouragement").style.opacity = 0;}, 750);
+      if (bg1===false) {
+        bg1 = true;
+        document.getElementById("gameBG").style.backgroundColor="#c9ead0";
+        document.getElementById("encouragement").classList.add("notransition");
+        document.getElementById("encouragement").style.opacity = 1;
+        setTimeout(() => {
+          document.getElementById("encouragement").classList.remove("notransition");
+          document.getElementById("encouragement").style.opacity = 0;
+        }, 750);
       }
     }
 
     if (gaugePercent >= 66&& gaugePercent<90) {
-      if (bg2==false) {
+      if (bg2===false) {
         bg2 = true;
-      document.getElementById("gameBG").style.backgroundColor="#e0e8b6";
-      document.getElementById("encouragement").style.opacity = 1;
-      setTimeout(function(){document.getElementById("encouragement").style.opacity = 0;}, 750);
-          }
+        document.getElementById("gameBG").style.backgroundColor="#e0e8b6";
+        document.getElementById("encouragement").classList.add("notransition");
+        document.getElementById("encouragement").style.opacity = 1;
+        setTimeout(() => {
+          document.getElementById("encouragement").classList.remove("notransition");
+          document.getElementById("encouragement").style.opacity = 0;
+        }, 750);
+      }
     }
 
     if (gaugePercent >= 90&& gaugePercent<100) {
+      document.getElementById("encouragement").classList.add("notransition");
       document.getElementById("gameBG").style.backgroundColor="#e6c695";
       document.getElementById("encouragement").style.opacity = 1;
     }
@@ -229,8 +203,38 @@ function checkAnswer() {
     document.getElementById("set3").style.transform="scale(1.05)";
     document.getElementById("math-answer").classList.add("math-box-right");
     setTimeout(() => {
-  document.getElementById("set3").style.transform="scale(1)";
-document.getElementById("math-answer").classList.remove("math-box-right");}, 100);
+      document.getElementById("set3").style.transform="scale(1)";
+      document.getElementById("math-answer").classList.remove("math-box-right");
+    }, 100);
+
+  }
+}
+
+function displayProblems() {
+  document.getElementById("row1").innerHTML=expressions[currentExpression-2];
+  document.getElementById("solution1").innerHTML=solutions[currentExpression-2];
+  document.getElementById("row2").innerHTML=expressions[currentExpression-1];
+  document.getElementById("solution2").innerHTML=solutions[currentExpression-1];
+  document.getElementById("row3").innerHTML=expressions[currentExpression];
+  document.getElementById("row4").innerHTML=expressions[currentExpression + 1];
+  document.getElementById("row5").innerHTML=expressions[currentExpression + 2];
+
+  if (expressions[currentExpression-2] === undefined) {
+    document.getElementById("row1").innerHTML="";
+    document.getElementById("solution1").innerHTML="";
+  }
+
+  if (expressions[currentExpression-1] === undefined) {
+    document.getElementById("row2").innerHTML="";
+    document.getElementById("solution2").innerHTML="";
+  }
+
+  if (expressions[currentExpression+1] === undefined) {
+    document.getElementById("row4").innerHTML="";
+  }
+
+  if (expressions[currentExpression+2] === undefined) {
+    document.getElementById("row5").innerHTML="";
   }
 }
 
