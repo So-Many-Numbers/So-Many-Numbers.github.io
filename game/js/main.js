@@ -53,32 +53,33 @@ function generateGame(numberOfProblems) {
     const modeParam = urlParams.get('mode');
     if (!modeParam || !modeParam.includes("a") && !modeParam.includes("s")
       && !modeParam.includes("m") && !modeParam.includes("d")) {
-      modeArray.push("+");
-      modeArray.push("-");
-      modeArray.push("x");
-      modeArray.push("÷");
+      modeArray.push(0);
+      modeArray.push(1);
+      modeArray.push(2);
+      modeArray.push(3);
       mathModeDisplay += "+-x+";
     } else {
       if (modeParam.includes("a")) {
-        modeArray.push("+");
+        modeArray.push(0);
         mathModeDisplay += "+";
       }
       if (modeParam.includes("s")) {
-        modeArray.push("-");
+        modeArray.push(1);
         mathModeDisplay += "-";
       }
       if (modeParam.includes("m")) {
-        modeArray.push("x");
+        modeArray.push(2);
         mathModeDisplay += "x";
       }
       if (modeParam.includes("d")) {
-        modeArray.push("÷");
+        modeArray.push(3);
         mathModeDisplay += "÷";
       }
     }
     document.getElementsByClassName("mathMode")[0].innerHTML=mathModeDisplay;
     document.getElementsByClassName("mathMode")[1].innerHTML=mathModeDisplay;
 
+console.log(modeArray);
     for (let i = 0; i < numberOfProblems; i+=1) {
       let operatorRand = modeArray[Math.floor(Math.random() * modeArray.length)];
       let operator;
@@ -86,7 +87,7 @@ function generateGame(numberOfProblems) {
       let secondNumber;
       let solution;
 
-      if (operatorRand == "+") {
+      if (operatorRand === 0) {
         firstNumber = Math.floor((Math.random() * 20) + 1);
         secondNumber = Math.floor((Math.random() * 20) + 1);
         solution = firstNumber + secondNumber;
@@ -94,8 +95,8 @@ function generateGame(numberOfProblems) {
         solutions.push(solution);
       }
 
-    else if (operatorRand == "-") {
-      firstNumber = Math.floor((Math.random() * 30) + 1);
+    else if (operatorRand === 1) {
+      firstNumber = Math.floor((Math.random() * 29) + 2);
       secondNumber = 30;
       while (firstNumber - secondNumber < 0) {
         secondNumber = Math.floor((Math.random() * 30) + 1);
@@ -105,7 +106,7 @@ function generateGame(numberOfProblems) {
       solutions.push(solution);
     }
 
-    else if (operatorRand == "x") {
+    else if (operatorRand === 2) {
       firstNumber = Math.floor((Math.random() * 12) + 1);
       secondNumber = Math.floor((Math.random() * 12) + 1);
       solution = firstNumber * secondNumber;
@@ -117,7 +118,7 @@ function generateGame(numberOfProblems) {
       let numberOne = Math.floor((Math.random() * 12) + 1);
       let numberTwo = Math.floor((Math.random() * 12) + 1);
       firstNumber = numberOne * numberTwo;
-      while (firstNumber % secondNumber != 0) {
+      while (firstNumber % secondNumber !== 0) {
         secondNumber = numberOne;
       }
       solution = firstNumber / secondNumber;
