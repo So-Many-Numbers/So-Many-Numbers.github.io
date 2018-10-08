@@ -45,66 +45,48 @@ function save() {
 
 function generateGame(numberOfProblems) {
 
-
-    let add = false;
-    let subtract = false;
-    let multiply = false;
-    let divide = false;
+    // add, subtract, multiply, divide
+    let modeArray = [];
     let mathModeDisplay = "";
 
     const urlParams = new URLSearchParams(window.location.search);
     const modeParam = urlParams.get('mode');
     if (!modeParam || !modeParam.includes("a") && !modeParam.includes("s")
       && !modeParam.includes("m") && !modeParam.includes("d")) {
-      add = true;
-      subtract = true;
-      multiply = true;
-      divide = true;
-      mathModeDisplay = "+-x÷";
+      modeArray.push("+");
+      modeArray.push("-");
+      modeArray.push("x");
+      modeArray.push("÷");
+      mathModeDisplay += "+-x+";
     } else {
       if (modeParam.includes("a")) {
-        add = true;
+        modeArray.push("+");
         mathModeDisplay += "+";
       }
       if (modeParam.includes("s")) {
-        subtract = true;
+        modeArray.push("-");
         mathModeDisplay += "-";
       }
       if (modeParam.includes("m")) {
-        multiply = true;
+        modeArray.push("x");
         mathModeDisplay += "x";
       }
       if (modeParam.includes("d")) {
-        divide = true;
+        modeArray.push("÷");
         mathModeDisplay += "÷";
       }
     }
     document.getElementsByClassName("mathMode")[0].innerHTML=mathModeDisplay;
     document.getElementsByClassName("mathMode")[1].innerHTML=mathModeDisplay;
 
-  document.getElementById("countdownNumber").innerHTML="3";
-  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="2"; }, 1000);
-  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="1"; }, 2000);
-
-  setTimeout(() => {
-    document.getElementById("countdown").style.display = "none";
-    document.getElementById("main-game").style.display = "grid";
-    currentTime = 0;
-    intime = setInterval(stopwatch,100);
-    offset = Date.now();
-    document.getElementById("math-answer").focus();
-    numberProblems = numberOfProblems;
-
-    document.getElementById("score-meter").innerHTML=numberProblems + " left";
-
     for (let i = 0; i < numberOfProblems; i+=1) {
-      let operatorRand = Math.floor(Math.random() * 4);
+      let operatorRand = modeArray[Math.floor(Math.random() * modeArray.length)];
       let operator;
       let firstNumber;
       let secondNumber;
       let solution;
 
-      if (operatorRand == 0) {
+      if (operatorRand == "+") {
         firstNumber = Math.floor((Math.random() * 20) + 1);
         secondNumber = Math.floor((Math.random() * 20) + 1);
         solution = firstNumber + secondNumber;
@@ -112,7 +94,7 @@ function generateGame(numberOfProblems) {
         solutions.push(solution);
       }
 
-    else if (operatorRand == 1) {
+    else if (operatorRand == "-") {
       firstNumber = Math.floor((Math.random() * 30) + 1);
       secondNumber = 30;
       while (firstNumber - secondNumber < 0) {
@@ -123,7 +105,7 @@ function generateGame(numberOfProblems) {
       solutions.push(solution);
     }
 
-    else if (operatorRand == 2) {
+    else if (operatorRand == "x") {
       firstNumber = Math.floor((Math.random() * 12) + 1);
       secondNumber = Math.floor((Math.random() * 12) + 1);
       solution = firstNumber * secondNumber;
@@ -144,6 +126,22 @@ function generateGame(numberOfProblems) {
     }
 
   }
+
+
+  document.getElementById("countdownNumber").innerHTML="3";
+  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="2"; }, 1000);
+  setTimeout(() => { document.getElementById("countdownNumber").innerHTML="1"; }, 2000);
+
+  setTimeout(() => {
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("main-game").style.display = "grid";
+    currentTime = 0;
+    intime = setInterval(stopwatch,100);
+    offset = Date.now();
+    document.getElementById("math-answer").focus();
+    numberProblems = numberOfProblems;
+
+    document.getElementById("score-meter").innerHTML=numberProblems + " left";
 
   displayProblems();
 }, 3000);
