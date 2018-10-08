@@ -1,5 +1,6 @@
 const expressions = [];
 const solutions = [];
+const modeArray = [];
 let currentExpression = 0;
 let numberProblems = 0;
 let intime;
@@ -8,9 +9,8 @@ let bg1 = false;
 let bg2 = false;
 
 let saveData = {
-  asmdHighScore: null,
-  asHighScore: null,
-  mdHighScore: null
+  highScoresMode: [],
+  highScoresScore: []
 }
 
 if(typeof(localStorage) !== "undefined") {
@@ -45,8 +45,6 @@ function save() {
 
 function generateGame(numberOfProblems) {
 
-    // add, subtract, multiply, divide
-    let modeArray = [];
     let mathModeDisplay = "";
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -79,7 +77,6 @@ function generateGame(numberOfProblems) {
     document.getElementsByClassName("mathMode")[0].innerHTML=mathModeDisplay;
     document.getElementsByClassName("mathMode")[1].innerHTML=mathModeDisplay;
 
-console.log(modeArray);
     for (let i = 0; i < numberOfProblems; i+=1) {
       let operatorRand = modeArray[Math.floor(Math.random() * modeArray.length)];
       let operator;
@@ -170,13 +167,23 @@ function checkAnswer() {
       clearInterval(intime);
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
-      if(Number(currentTime) < Number(saveData.asmdHighScore) || saveData.asmdHighScore === null) {
-        saveData.asmdHighScore=currentTime;
+      const modeArrayString = JSON.stringify(modeArray);
+      let scoreIndex = saveData.highScoresMode.indexOf(modeArrayString);
+      if (scoreIndex > -1) {
+        let scoreIndex = saveData.highScoresMode.indexOf(modeArrayString);
+        if (Number(currentTime) < Number(saveData.highScoresScore[scoreIndex])) {
+          saveData.highScoresScore[scoreIndex]=currentTime;
+          save();
+        }
+      } else {
+        saveData.highScoresMode.push(modeArrayString);
+        saveData.highScoresScore.push(currentTime);
         save();
+        scoreIndex = saveData.highScoresScore.length-1;
       }
       document.getElementById("results").innerHTML=`
           <div>Your Score: ` + currentTime + ` seconds</div>
-          <div>High Score: ` + saveData.asmdHighScore + ` seconds</div>
+          <div>High Score: ` + saveData.highScoresScore[scoreIndex] + ` seconds</div>
       `;
       setTimeout(() => { document.getElementById("buttonsDiv").style.opacity=1; }, 100);
     }
