@@ -55,7 +55,7 @@ function generateGame(numberOfProblems) {
       modeArray.push(1);
       modeArray.push(2);
       modeArray.push(3);
-      mathModeDisplay += "+-x+";
+      mathModeDisplay += "+-x÷";
     } else {
       if (modeParam.includes("a")) {
         modeArray.push(0);
