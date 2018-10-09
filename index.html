@@ -14,11 +14,6 @@
     <title>So Many Numbers!</title>
   </head>
   <body>
-    <div id="authors">
-      <div>
-        By <a class="authorName" onclick="authorInfo('Ashley')">Ashley Caswell</a> and <a class="authorName" onclick="authorInfo('Timothy')">Timothy Hsu</a>
-      </div>
-    </div>
     <nav class= "navigation navbar">
       <a class="navbar-brand"><img src="./img/SoManyNumbers.png" alt="So Many Numbers!"></a>
       <div>
@@ -38,18 +33,16 @@
     </div>
     <div id= "center" style="text-align: center;">
       <div id="ashleyInfo">
-        <div>
-          <h3>Other Projects by Ashley Caswell</h3>
-          <p>
-            <a class="projectName" href="https://farm-link.herokuapp.com" target="_blank">Farm-Link</a>
-          </p>
-          <p>
-            <a class="projectName" href="https://github.com/ash-caz" target="_blank"><em>Ashley's GitHub</em></a>
-          </p>
-          <p>
-            <button class="button-2" type="button" onclick="goBack()">Go Back</button>
-          </p>
-        </div>
+        <h3>Other Projects by Ashley Caswell</h3>
+        <p>
+          <a class="projectName" href="https://farm-link.herokuapp.com" target="_blank">Farm-Link</a>
+        </p>
+        <p>
+          <a class="projectName" href="https://github.com/ash-caz" target="_blank"><em>Ashley's GitHub</em></a>
+        </p>
+        <p>
+          <button class="button-2" type="button" onclick="goBack()">Go Back</button>
+        </p>
       </div>
       <div id="timothyInfo">
         <h3>Other Projects by Timothy Hsu</h3>
@@ -65,6 +58,12 @@
       </div>
       <div id="gameStart">
         <p><button class= "button-1" type="button" onclick="location.href='./game/index.html'">Start</button></p>
+      </div>
+    </div>
+    <div id="authors">
+      <div>
+        By <a class="authorName" onclick="authorInfo('Ashley')">Ashley Caswell</a> and <a class="authorName" onclick="authorInfo('Timothy')">Timothy Hsu</a>
+         // <a href="https://github.com/So-Many-Numbers/So-Many-Numbers.github.io" target="_blank">GitHub Repo</a>
       </div>
     </div>
     <script src="js/main.js" charset="utf-8"></script>
