@@ -94,7 +94,7 @@ function generateGame(numberOfProblems) {
 
     else if (operatorRand === 1) {
       firstNumber = Math.floor((Math.random() * 29) + 2);
-      secondNumber = 30;
+      secondNumber = 31;
       while (firstNumber - secondNumber < 0) {
         secondNumber = Math.floor((Math.random() * 30) + 1);
       }
