@@ -172,10 +172,14 @@ function checkAnswer() {
       if (scoreIndex > -1) {
         let scoreIndex = saveData.highScoresMode.indexOf(modeArrayString);
         if (Number(currentTime) < Number(saveData.highScoresScore[scoreIndex])) {
+          document.getElementById("timer-area").style.backgroundColor="#e2e239";
           saveData.highScoresScore[scoreIndex]=currentTime;
           save();
+        } else {
+          document.getElementById("timer-area").style.backgroundColor="#c0c0c0";
         }
       } else {
+        document.getElementById("timer-area").style.backgroundColor="#e2e239";
         saveData.highScoresMode.push(modeArrayString);
         saveData.highScoresScore.push(currentTime);
         save();
@@ -228,7 +232,6 @@ function checkAnswer() {
       document.getElementById("encouragement").style.opacity = 0;
       document.getElementById("encouragement").style.display = "none";
       document.getElementById("gameBG").style.backgroundColor="#fafafa";
-      document.getElementById("timer-area").style.backgroundColor="#e2e239";
     }
 
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
