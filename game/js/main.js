@@ -92,16 +92,18 @@ function generateGame(numberOfProblems) {
         solutions.push(solution);
       }
 
-    else if (operatorRand === 1) {
-      firstNumber = Math.floor((Math.random() * 29) + 2);
-      secondNumber = 31;
-      while (firstNumber - secondNumber < 0) {
+      else if (operatorRand === 1) {
+        firstNumber = Math.floor((Math.random() * 30) + 1);
         secondNumber = Math.floor((Math.random() * 30) + 1);
+        if (firstNumber - secondNumber < 0) {
+          solution = secondNumber - firstNumber;
+          expressions.push(secondNumber + " - " + firstNumber + " =");
+        } else {
+          solution = firstNumber - secondNumber;
+          expressions.push(firstNumber + " - " + secondNumber + " =");
+        }
+        solutions.push(solution);
       }
-      solution = firstNumber - secondNumber;
-      expressions.push(firstNumber + " - " + secondNumber + " =");
-      solutions.push(solution);
-    }
 
     else if (operatorRand === 2) {
       firstNumber = Math.floor((Math.random() * 12) + 1);
