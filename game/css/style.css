@@ -146,6 +146,7 @@ body {
   opacity:0;
   color:#000;
   transition:opacity 0.75s;
+  width:100%;
 }
 
 #encouragement-words {

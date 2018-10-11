@@ -203,6 +203,7 @@ function checkAnswer() {
         bg1 = true;
         document.getElementById("gameBG").style.backgroundColor="#c9ead0";
         document.getElementById("encouragement").classList.add("notransition");
+        document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left - " + currentTime + " s</span>";
         document.getElementById("encouragement").style.opacity = 1;
         setTimeout(() => {
           document.getElementById("encouragement").classList.remove("notransition");
@@ -216,6 +217,7 @@ function checkAnswer() {
         bg2 = true;
         document.getElementById("gameBG").style.backgroundColor="#e0e8b6";
         document.getElementById("encouragement").classList.add("notransition");
+        document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left - " + currentTime + " s</span>";
         document.getElementById("encouragement").style.opacity = 1;
         setTimeout(() => {
           document.getElementById("encouragement").classList.remove("notransition");
@@ -227,6 +229,7 @@ function checkAnswer() {
     if (gaugePercent >= 90&& gaugePercent<100) {
       document.getElementById("encouragement").classList.add("notransition");
       document.getElementById("gameBG").style.backgroundColor="#e6c695";
+      document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left";
       document.getElementById("encouragement").style.opacity = 1;
     }
 
@@ -239,7 +242,6 @@ function checkAnswer() {
     document.getElementById("active-gauge").style.width = gaugePercent+"%";
     document.getElementById("percentageBar").innerHTML= gaugePercent.toFixed(0)+"%"+ " Complete";
     document.getElementById("score-meter").innerHTML=numberProblems - currentExpression + " left";
-    document.getElementById("encouragement").innerHTML="<span id='encouragement-words'>" + (numberProblems - currentExpression) + " left</span>";
     document.getElementById("set3").style.transform="scale(1.05)";
     document.getElementById("math-answer").classList.add("math-box-right");
     setTimeout(() => {
