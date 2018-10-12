@@ -167,22 +167,24 @@ function checkAnswer() {
       document.getElementById("non-math-area").style.display = "block";
       const modeString = modeArray.join('');
       if (saveData.modes.hasOwnProperty(modeString)) {
-        if (Number(currentTime) < Number(saveData.modes[modeString].highScore)) {
+        saveData.modes[modeString]["timesFinished"] += 1;
+        if (Number(currentTime) < saveData.modes[modeString].highScore) {
           document.getElementById("timer-area").style.backgroundColor="#e2e239";
-          saveData.modes[modeString].highScore=currentTime;
-          save();
+          saveData.modes[modeString].highScore = Number(currentTime);
         } else {
           document.getElementById("timer-area").style.backgroundColor="#c0c0c0";
         }
+        save();
       } else {
         document.getElementById("timer-area").style.backgroundColor="#e2e239";
         saveData.modes[modeString] = {};
-        saveData.modes[modeString]["highScore"] = currentTime;
+        saveData.modes[modeString]["highScore"] = Number(currentTime);
+        saveData.modes[modeString]["timesFinished"] = 1;
         save();
       }
       document.getElementById("results").innerHTML=`
           <div>Your Score: ` + currentTime + ` seconds</div>
-          <div>High Score: ` + saveData.modes[modeString].highScore + ` seconds</div>
+          <div>High Score: ` + saveData.modes[modeString].highScore.toFixed(1) + ` seconds</div>
       `;
       setTimeout(() => { document.getElementById("buttonsDiv").style.opacity=1; }, 100);
     }
