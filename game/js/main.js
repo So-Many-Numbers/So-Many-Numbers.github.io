@@ -9,8 +9,7 @@ let bg1 = false;
 let bg2 = false;
 
 let saveData = {
-  highScoresMode: [],
-  highScoresScore: []
+  modes: {}
 }
 
 if(typeof(localStorage) !== "undefined") {
@@ -51,26 +50,23 @@ function generateGame(numberOfProblems) {
     const modeParam = urlParams.get('mode');
     if (!modeParam || !modeParam.includes("a") && !modeParam.includes("s")
       && !modeParam.includes("m") && !modeParam.includes("d")) {
-      modeArray.push(0);
-      modeArray.push(1);
-      modeArray.push(2);
-      modeArray.push(3);
+      modeArray.push("a", "s", "m", "d");
       mathModeDisplay += "+-x÷";
     } else {
       if (modeParam.includes("a")) {
-        modeArray.push(0);
+        modeArray.push("a");
         mathModeDisplay += "+";
       }
       if (modeParam.includes("s")) {
-        modeArray.push(1);
+        modeArray.push("s");
         mathModeDisplay += "-";
       }
       if (modeParam.includes("m")) {
-        modeArray.push(2);
+        modeArray.push("m");
         mathModeDisplay += "x";
       }
       if (modeParam.includes("d")) {
-        modeArray.push(3);
+        modeArray.push("d");
         mathModeDisplay += "÷";
       }
     }
@@ -84,7 +80,7 @@ function generateGame(numberOfProblems) {
       let secondNumber;
       let solution;
 
-      if (operatorRand === 0) {
+      if (operatorRand === "a") {
         firstNumber = Math.floor((Math.random() * 20) + 1);
         secondNumber = Math.floor((Math.random() * 20) + 1);
         solution = firstNumber + secondNumber;
@@ -92,7 +88,7 @@ function generateGame(numberOfProblems) {
         solutions.push(solution);
       }
 
-      else if (operatorRand === 1) {
+      else if (operatorRand === "s") {
         firstNumber = Math.floor((Math.random() * 30) + 1);
         secondNumber = Math.floor((Math.random() * 30) + 1);
         if (firstNumber - secondNumber < 0) {
@@ -105,7 +101,7 @@ function generateGame(numberOfProblems) {
         solutions.push(solution);
       }
 
-    else if (operatorRand === 2) {
+    else if (operatorRand === "m") {
       firstNumber = Math.floor((Math.random() * 12) + 1);
       secondNumber = Math.floor((Math.random() * 12) + 1);
       solution = firstNumber * secondNumber;
@@ -169,27 +165,24 @@ function checkAnswer() {
       clearInterval(intime);
       document.getElementById("math-problems").style.display = "none";
       document.getElementById("non-math-area").style.display = "block";
-      const modeArrayString = JSON.stringify(modeArray);
-      let scoreIndex = saveData.highScoresMode.indexOf(modeArrayString);
-      if (scoreIndex > -1) {
-        let scoreIndex = saveData.highScoresMode.indexOf(modeArrayString);
-        if (Number(currentTime) < Number(saveData.highScoresScore[scoreIndex])) {
+      const modeString = modeArray.join('');
+      if (saveData.modes.hasOwnProperty(modeString)) {
+        if (Number(currentTime) < Number(saveData.modes[modeString].highScore)) {
           document.getElementById("timer-area").style.backgroundColor="#e2e239";
-          saveData.highScoresScore[scoreIndex]=currentTime;
+          saveData.modes[modeString].highScore=currentTime;
           save();
         } else {
           document.getElementById("timer-area").style.backgroundColor="#c0c0c0";
         }
       } else {
         document.getElementById("timer-area").style.backgroundColor="#e2e239";
-        saveData.highScoresMode.push(modeArrayString);
-        saveData.highScoresScore.push(currentTime);
+        saveData.modes[modeString] = {};
+        saveData.modes[modeString]["highScore"] = currentTime;
         save();
-        scoreIndex = saveData.highScoresScore.length-1;
       }
       document.getElementById("results").innerHTML=`
           <div>Your Score: ` + currentTime + ` seconds</div>
-          <div>High Score: ` + saveData.highScoresScore[scoreIndex] + ` seconds</div>
+          <div>High Score: ` + saveData.modes[modeString].highScore + ` seconds</div>
       `;
       setTimeout(() => { document.getElementById("buttonsDiv").style.opacity=1; }, 100);
     }
