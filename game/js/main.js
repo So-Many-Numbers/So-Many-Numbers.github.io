@@ -12,7 +12,7 @@ let saveData = {
   modes: {}
 }
 
-if(typeof(localStorage) !== "undefined") {
+if(supportsLocalStorage) {
   if (localStorage.getItem("soManyNumbersSaveData")) {
     const parsedData = JSON.parse(localStorage.getItem("soManyNumbersSaveData"));
     for (let i = 0; i < Object.keys(parsedData).length; i += 1) {
@@ -24,20 +24,8 @@ if(typeof(localStorage) !== "undefined") {
   }
 }
 
-var isNotSafariPrivate = function() {
-  var doesItWork = 'test', storage = window.sessionStorage;
-  try {
-    storage.setItem(doesItWork, '1');
-    storage.removeItem(doesItWork);
-    return true;
-  }
-  catch (error) {
-    return false;
-  }
-}
-
 function save() {
-  if ( isNotSafariPrivate() ) {
+  if (supportsLocalStorage) {
     localStorage.setItem('soManyNumbersSaveData', JSON.stringify(saveData));
   }
 }
