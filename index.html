@@ -6,16 +6,16 @@
     <meta name="author" content="Ashley Caswell and Timothy Hsu">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-title" content="Numbers!">
-    <link rel="apple-touch-icon" href="./sharedAssets/img/SoManyNumbers.png">
+    <link rel="apple-touch-icon" href="./shared-assets/img/SoManyNumbers.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="./titleScreen/css/style.css">
+    <link rel="stylesheet" href="./title-screen/css/style.css">
     <title>So Many Numbers!</title>
   </head>
   <body>
     <nav class= "navigation navbar">
-      <a class="navbar-brand"><img src="./sharedAssets/img/SoManyNumbers.png" alt="So Many Numbers!"></a>
+      <a class="navbar-brand"><img src="./shared-assets/img/SoManyNumbers.png" alt="So Many Numbers!"></a>
       <div>
         So Many Numbers!
       </div>
@@ -66,6 +66,22 @@
          // <a href="https://github.com/So-Many-Numbers/So-Many-Numbers.github.io" target="_blank">GitHub Repo</a>
       </div>
     </div>
-    <script src="./titleScreen/js/main.js" charset="utf-8"></script>
+    <script src="./title-screen/js/main.js" charset="utf-8"></script>
+    <script src="./upup.min.js"></script>
+    <script>
+      UpUp.start({
+        'content-url': 'index.html',
+        'assets': [
+        './title-screen/css/style.css',
+        './title-screen/js/main.js',
+        './game/index.html',
+        './game/css/style.css',
+        './game/js/feature-checker.js',
+        './game/js/main.js',
+        './shared-assets/img/home-button.png',
+        './shared-assets/img/SoManyNumbers.png'
+        ]
+      });
+    </script>
   </body>
 </html>
