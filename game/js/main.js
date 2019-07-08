@@ -8,28 +8,6 @@ let currentTime;
 let bg1 = false;
 let bg2 = false;
 
-let saveData = {
-  modes: {}
-}
-
-if(supportsLocalStorage) {
-  if (localStorage.getItem("soManyNumbersSaveData")) {
-    const parsedData = JSON.parse(localStorage.getItem("soManyNumbersSaveData"));
-    for (let i = 0; i < Object.keys(parsedData).length; i += 1) {
-      if (saveData.hasOwnProperty(Object.getOwnPropertyNames(parsedData)[i])) {
-        saveData[Object.keys(saveData)[Object.keys(saveData).indexOf(Object.getOwnPropertyNames(parsedData)[i])]]
-        = parsedData[Object.keys(parsedData)[i]];
-      }
-    }
-  }
-}
-
-function save() {
-  if (supportsLocalStorage) {
-    localStorage.setItem('soManyNumbersSaveData', JSON.stringify(saveData));
-  }
-}
-
 function generateGame(numberOfProblems) {
 
     let mathModeDisplay = "";
