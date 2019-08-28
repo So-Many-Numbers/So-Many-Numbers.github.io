@@ -1,6 +1,6 @@
   // Specific save data
   let saveData = {
-    modes: {}
+    levels: {}
   }
 
 // Local storage functions
