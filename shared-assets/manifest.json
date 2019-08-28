@@ -4,7 +4,7 @@
     "description": "A creative, and educational web app that encourages those of all ages to discover their math abilities!",
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#0873ab",
+    "theme_color": "#066596",
     "background_color": "#1da2e6",
     "icons": [
       {
@@ -13,7 +13,7 @@
         "type": "image/png"
       },
       {
-        "src": "../shared-assets/img/SoManyNumbers.png",
+        "src": "../shared-assets/img/SoManyNumbers512.png",
         "sizes": "512x512",
         "type": "image/png"
       }
