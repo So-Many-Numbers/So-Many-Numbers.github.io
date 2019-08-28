@@ -4,7 +4,7 @@
     "description": "A creative, and educational web app that encourages those of all ages to discover their math abilities!",
     "start_url": "/",
     "display": "standalone",
-    "theme_color": "#1da2e6",
+    "theme_color": "#0873ab",
     "background_color": "#1da2e6",
     "icons": [
       {
