@@ -1,5 +1,7 @@
   // Specific save data
   let saveData = {
+    titleView: 0,
+    savedOperators: "",
     levels: {}
   }
 

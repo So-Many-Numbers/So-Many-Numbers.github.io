@@ -1,9 +1,12 @@
 html {
   height:100%;
 }
+
 body {
   font-family:"noto sans", sans-serif;
-  background-color: #d3d3d3;
+  padding:0;
+  margin:0;
+  background-color: #d2d2d2;
   height: 100%;
   overflow:hidden;
   display:grid;
@@ -12,89 +15,176 @@ body {
 }
 
 h1 {
-  font-size: 32px;
-  font-family: "Sans-Serif", Arial;
-
+  font-weight:400;
+  font-size:7vmin;
+  margin:0 0 0.5em 0;
 }
+
+.header-bar {
+  background-color:#cfe0f1;
+  /*background-image: linear-gradient(to bottom right, #cfe2f7, #e9eff8, #cfe2f7);*/
+  background-image: linear-gradient(to bottom right, #71c1f7, #b0dff3, #71c1f7);
+  width:100%;
+  font-size:100px;
+  text-align:center;
+  box-shadow: 0px 2px 7px rgb(0,0,0,0.3);
+}
+
+#logo {
+  margin:10px auto;
+  content:url("../../shared-assets/img/SoManyNumbersTitleLight.svg");
+  width:75vmin;
+}
+
+#gameStart {
+  font-size:calc(12px + 2.5vmin);
+}
+
+button {
+  border:none;
+  text-align:center;
+  text-decoration: none;
+  display: inline-block;
+  cursor:pointer;
+  outline:none;
+  padding: 0;
+  color:#fafafa;
+  font-family:"noto sans", sans-serif;
+  transition: background-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+#difficultyIndicator {
+  margin-top:0;
+  font-size:5vmin;
+}
+
+.circle {
+  box-shadow: 0 1.5vmin #999;
+  background-color: #b23681;
+  border-radius:50%;
+  width:24vmin;
+  height:22.5vmin;
+  font-size:11vmin;
+  line-height:0.65;
+  letter-spacing:normal;
+}
+
+.circle:hover, .customizeGo:hover {
+  background-color:#e86198;
+}
+
+.circle:active, .customizeGo:active {
+  background-color:#ef4e86;
+  box-shadow: 0 0.5vmin #999;
+  transform: translateY(1vmin);
+}
+
+#presetOperators {
+  letter-spacing:0.5em;
+  margin-bottom:1em;
+  transition:opacity 0.4s;
+}
+
+#customize {
+  box-shadow: 0 1.5vmin #999;
+  background-color: #9b801e;
+  border-radius:8vmin;
+  padding:0.5vmin 7vmin;
+  font-size:7vmin;
+}
+
+#customize:hover {
+  background-color:#b39529;
+}
+
+#customize:active {
+  background-color:#bb9610;
+  box-shadow: 0 0.5vmin #999;
+  transform: translateY(1vmin);
+}
+
+#customizeOperators {
+  letter-spacing:0.3em;
+  margin-top:1em;
+  opacity:0;
+  display:none;
+  transition:opacity 0.4s;
+}
+
+.smallCircle {
+  box-shadow: 0 1.5vmin #999;
+  background-color: #b5c5b4;
+  border-radius:50%;
+  width:16vmin;
+  height:14.5vmin;
+  font-size:11vmin;
+  letter-spacing:normal;;
+}
+
+.smallCircle:hover {
+  background-color:#9abb98;
+}
+
+.smallCircle:active {
+  background-color:#a7cea5;
+  box-shadow: 0 0.5vmin #999;
+  transform: translateY(1vmin);
+}
+
+.smallCircleActivated {
+  background-color: #0d9806;
+}
+
+.smallCircleActivated:hover {
+  background-color: #0d9806;
+}
+
+.smallCircleActivated:active {
+  background-color: #0d9806;
+}
+
+#customizeGoButton {
+  opacity:0;
+  display:none;
+  transition: opacity 0.4s;
+}
+
+.customizeGo {
+  margin-top:0.75em;
+  box-shadow: 0 1.5vmin #999;
+  background-color: #b23681;
+  border-radius:4vmin;
+  padding:2vmin 7vmin;
+  font-size:10vmin;
+}
+
+.buttonDisabled {
+  cursor: not-allowed;
+  background-color:#d8c3d0;
+  box-shadow: 0px 0px !important;
+  transition:none;
+}
+
+.buttonDisabled:hover {
+  background-color:#d8c3d0;
+}
+
+.buttonDisabled:active {
+  background-color:#d8c3d0;
+  transform:none;
+}
+.auxillaryButtons {
+  margin-top:7vh;
+}
+
 #center {
   display: flex;
   text-align: center;
   overflow:auto;
-}
-.button-1 {
-    border: none;
-    padding: 15px 25px;
-    font-size: 35px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #b23681;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-}
-
-.button-2 {
-    border: none;
-    padding: 3px 12px;
-    font-size: 20px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #d67e24;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 5px #999;
-}
-
-    button:active {
-      border: 2px solid blue;
-    }
-    button:focus {
-      border: 2px solid blue;
-    }
-.navbar {
-  border: none;
-padding:10px 25px;
-text-align:right;
-text-align: center;
-background-color:#1da2e6;
-color:#ffffff;
-font-family:"Sans-Serif", Arial;
-font-size: 31px;
-  }
-
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-}
-.side-bar {
-    background: #39b771;
-    color: #ddd;
-    padding: 1em;
-
-    position: absolute;
-    right: -540px;
-    top: 200px;
-
-    transition: 300ms;
-  }
-
-  .side-bar:hover {
-    right: 0;
-  }
-
-  .tab {
-    padding: 0.5em;
-    position: absolute;
-    left: -60px;
-    background-color: #39b771;
-    transform: rotate(270deg);
-    width:100px;
-    text-align:center;
-    top:30px;
 }
 
 img {
@@ -114,13 +204,14 @@ a {
   color:#0e5ab9 !important;
   text-decoration:none !important;
   cursor:pointer;
+  transition:color 0.15s;
 }
 
 a:hover {
   color:#03a003 !important;
 }
 
-#ashleyInfo, #timothyInfo {
+#ashleyInfo, #timothyInfo, #helpInfo {
   margin:auto;
   width:80%;
   display:none;
@@ -135,20 +226,118 @@ h3 {
 }
 
 #gameStart {
+  opacity:0;
+  transition:opacity 0.7s;
   margin:auto;
 }
 
-@media (max-width: 440px) {
-  img {
-    width:45px;
+.button-2 {
+  border: none;
+  padding: 3px 12px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #d67e24;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px #999;
+}
+
+@media (min-width: 420px) and (min-height: 420px) {
+
+  body {
+    overflow-y:hidden;
   }
-  .navbar {
-    font-size: 27px;
+
+  h1 {
+    font-weight:400;
+    font-size:calc(10px + 3.2vmin);
+  }
+
+  #logo {
+    width:50vmin;
+    min-width:240px;
+    max-width:600px;
+  }
+
+  #difficultyIndicator {
+    margin-top:0;
+    font-size:3vmin;
+  }
+
+  .circle {
+    box-shadow: 0 1vmin #999;
+    background-color: #b23681;
+    border-radius:50%;
+    width:13vmin;
+    height:12vmin;
+    font-size:6vmin;
+    line-height:0.65;
+  }
+
+  #customize {
+    box-shadow: 0 1vmin #999;
+    border-radius:8vmin;
+    padding:0.5vmin 4.5vmin;
+    font-size:calc(10px + 3.2vmin);
+  }
+
+  .smallCircle {
+    box-shadow: 0 1vmin #999;
+    border-radius:50%;
+    width:9vmin;
+    height:8vmin;
+    font-size:6vmin;
+    letter-spacing:normal;
+  }
+
+  .customizeGo {
+    box-shadow: 0 1vmin #999;
+    border-radius:2vmin;
+    padding:1.2vmin 4.5vmin;
+    font-size:6vmin;
+  }
+
+}
+
+@media (max-height: 520px) {
+  .auxillaryButtons {
+    margin-top:4vh;
+  }
+  .customizeGo {
+    margin-top:0.5em;
+    padding-top:1vmin;
+    padding-bottom:1vmin;
+  }
+  #customizeOperators {
+    margin-top:0.75em;
   }
 }
 
-@media (max-width: 360px) {
-  .navbar {
-    font-size: 23px;
+@media (min-height: 800px) {
+
+  .header-bar {
+    box-shadow: 0px 3px 7px rgb(0,0,0,0.3);
+  }
+
+  #logo {
+    margin:20px auto;
+  }
+
+  .auxillaryButtons {
+    margin-top:7vh;
+  }
+
+  #difficultyIndicator {
+    margin-bottom:1.8em;
+  }
+}
+
+@media (min-height: 1000px) {
+
+  #logo {
+    margin:30px auto;
   }
 }

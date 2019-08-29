@@ -12,30 +12,18 @@
     <link rel="apple-touch-icon" href="./shared-assets/img/SoManyNumbersIOS.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#066596"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./shared-assets/css/fonts.css">
     <link rel="stylesheet" href="./title-screen/css/style.css">
     <title>So Many Numbers!</title>
   </head>
-  <body>
-    <nav class= "navigation navbar">
-      <a class="navbar-brand"><img src="./shared-assets/img/SoManyNumbersIOS.png" alt="So Many Numbers!"></a>
-      <div>
-        So Many Numbers!
-      </div>
-      <div class="content">
-      </div>
-    </nav>
-    <div class="side-bar">
-      <div class="tab">Help</div>
-      <h1>Game Goals!</h1>
-      <ul>
-       <li>This is an arithmetic game to help one build mental math skills.</li>
-       <li>Solve problems as fast as you can. There is a timer.</li>
-       <li>Have fun! Play as many times as you want!</li>
-     </ul>
+  <body onload="renderTitle()">
+
+    <div class="header-bar">
+      <div id="logo"></div>
     </div>
+
     <div id= "center" style="text-align: center;">
+
       <div id="ashleyInfo">
         <h3>Other Projects by Ashley Caswell</h3>
         <p>
@@ -60,9 +48,44 @@
           <button class="button-2" type="button" onclick="goBack()">Go Back</button>
         </p>
       </div>
-      <div id="gameStart">
-        <p><button class= "button-1" type="button" onclick="location.href='./game'">Start</button></p>
+      <div id="helpInfo">
+          <h3>Game Goals!</h3>
+          <ul>
+              <li>This is an arithmetic game to help one build mental math skills.</li>
+              <li>Solve problems as fast as you can. There is a timer.</li>
+              <li>Have fun! Play as many times as you want!</li>
+          </ul>
+            <button class="button-2" type="button" onclick="goBack()">Go Back</button>
+          </p>
       </div>
+
+      <div id="gameStart">
+        <p id="difficultyIndicator"><strong>Standard</strong> Difficulty</p>
+        <h1>Select Level</h1>
+        <div id="levelPane">
+          <div id="presetOperators">
+            <button class="circle" onclick="loadGame('as')">+<br>−</button>
+            <button class="circle" onclick="loadGame('md')">×<br>÷</button>
+            <button class="circle" onclick="loadGame('asmd')">+−<br>×÷</button>
+          </div>
+          <div id="customizeButton">
+            <button id="customize" onclick="toggleCustomize();">Customize &nbsp;▾</button>
+          </div>
+          <div id="customizeOperators">
+            <button id="smallCirclea" class="smallCircle" onclick="changeCustomizeOperator('smallCirclea')">+</button>
+            <button id="smallCircles" class="smallCircle" onclick="changeCustomizeOperator('smallCircles')">−</button>
+            <button id="smallCirclem" class="smallCircle" onclick="changeCustomizeOperator('smallCirclem')">×</button>
+            <button id="smallCircled" class="smallCircle" onclick="changeCustomizeOperator('smallCircled')">÷</button>
+          </div>
+          <div id="customizeGoButton">
+              <button id="customizeStart" class="customizeGo buttonDisabled" onclick="loadGameFromCustomize()">Start</button>
+          </div>
+        </div>
+        <div class="auxillaryButtons">
+          <a onclick="authorInfo('Help')">Help</a>
+        </div>
+      </div>
+
     </div>
     <div id="authors">
       <div>
@@ -70,6 +93,7 @@
          // <a href="https://github.com/So-Many-Numbers/So-Many-Numbers.github.io" target="_blank" rel="noopener">GitHub Repo</a>
       </div>
     </div>
+    <script src="../shared-assets/js/local-storage.js" charset="utf-8"></script>
     <script src="./title-screen/js/main.js" charset="utf-8"></script>
     <script src="./upup.min.js"></script>
     <script>

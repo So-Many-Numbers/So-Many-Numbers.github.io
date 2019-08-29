@@ -109,6 +109,7 @@ function generateGame(numberOfProblems) {
     }
 
   // Display a 3-second countdown
+  document.getElementById("countdown").style.opacity=1;
   document.getElementById("countdownNumber").innerHTML="3";
   setTimeout(() => { document.getElementById("countdownNumber").innerHTML="2"; }, 1000);
   setTimeout(() => { document.getElementById("countdownNumber").innerHTML="1"; }, 2000);
