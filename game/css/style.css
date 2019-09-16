@@ -49,6 +49,10 @@ body {
   grid-template-rows: auto 1fr 5%;
 }
 
+.HUDwrapper {
+  width:100%;
+}
+
 .HUD {
   margin:0 auto;
   width:90%;
